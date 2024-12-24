@@ -2,7 +2,8 @@
 'use client';
 
 import { useMemo } from 'react';
-import type { ResultSectionProps, CategoryType, LevelType, CategoryScores, SubsectionKeys, SubsectionInfo } from '../types'; // Changed from './data/categoryDescriptions'
+import type { ResultSectionProps, CategoryType, LevelType, CategoryScores, SubsectionKeys, SubsectionInfo } from '../types';
+import { categoryDescriptions } from './data/categoryDescriptions';
 import './styles/Result.css';
 
 const getLevel = (score: number): LevelType => {

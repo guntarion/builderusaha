@@ -1,5 +1,5 @@
 // src/app/(protected)/penilaian-wirausaha/ujian-hidup/components/data/categoryDescriptions.ts
-import type { CategoryDescriptions } from '../types';
+import type { CategoryDescriptions } from '../../types';
 
 export const categoryDescriptions: CategoryDescriptions = {
   harta: {

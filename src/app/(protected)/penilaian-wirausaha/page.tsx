@@ -30,8 +30,8 @@ const assessments: Assessment[] = [
     id: 'harta-tahta',
     title: 'Kecenderungan Ujian Harta Tahta Cinta',
     description: 'Pahami kecenderungan Anda dalam menghadapi ujian bisnis.',
-    link: '/penilaian-wirausaha/harta-tahta',
-    isAvailable: false,
+    link: '/penilaian-wirausaha/ujian-hidup',
+    isAvailable: true,
   },
 ];
 

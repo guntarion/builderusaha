@@ -1,7 +1,17 @@
-// src/app/(protected)/penilaian-wirausaha/ujian-hidup/types.ts
-// (Note: moved from /types/index.ts to /types.ts)
+// src\app\(protected)\penilaian-wirausaha\ujian-hidup\types.ts
 
 export type CategoryType = 'harta' | 'tahta' | 'wanita';
+
+export interface Subsection {
+  subtitle: string;
+  questions: string[];
+}
+
+export interface Section {
+  title: string;
+  category: CategoryType;
+  subsections: Subsection[];
+}
 export type LevelType = 'low' | 'moderate' | 'high';
 
 export interface SubsectionInfo {
@@ -15,9 +25,7 @@ export interface LevelInfo {
   recommendations: string[];
 }
 
-export interface CategoryLevels {
-  [key in LevelType]: LevelInfo;
-}
+export type CategoryLevels = Record<LevelType, LevelInfo>;
 
 export interface CategoryInfo {
   title: string;
@@ -26,9 +34,7 @@ export interface CategoryInfo {
   subsections: Record<string, SubsectionInfo>;
 }
 
-export interface CategoryDescriptions {
-  [key in CategoryType]: CategoryInfo;
-}
+export type CategoryDescriptions = Record<CategoryType, CategoryInfo>;
 
 export type SubsectionKeysHarta = 'relasiMateri' | 'polaKonsumsi' | 'riskBehavior';
 export type SubsectionKeysTahta = 'relasiKekuasaan' | 'polaKompetisi' | 'ambisi';
@@ -36,9 +42,23 @@ export type SubsectionKeysWanita = 'relasiRomantis' | 'relasiKeluarga' | 'polaAt
 export type SubsectionKeys = SubsectionKeysHarta | SubsectionKeysTahta | SubsectionKeysWanita;
 
 export interface CategoryScores {
-  [key in CategoryType]: {
+  harta: {
     total: number;
-    [key: string]: number;
+    relasiMateri: number;
+    polaKonsumsi: number;
+    riskBehavior: number;
+  };
+  tahta: {
+    total: number;
+    relasiKekuasaan: number;
+    polaKompetisi: number;
+    ambisi: number;
+  };
+  wanita: {
+    total: number;
+    relasiRomantis: number;
+    relasiKeluarga: number;
+    polaAttachment: number;
   };
 }
 

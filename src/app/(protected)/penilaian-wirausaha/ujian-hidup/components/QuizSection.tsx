@@ -3,7 +3,17 @@
 
 import { useState } from 'react';
 import './styles/Quiz.css';
-import type { QuizSectionProps, Section, CategoryType, QuizResults, CategoryScores } from '../types';
+import type {
+  QuizSectionProps,
+  Section,
+  CategoryType,
+  QuizResults,
+  CategoryScores,
+  SubsectionKeys,
+  SubsectionKeysHarta,
+  SubsectionKeysTahta,
+  SubsectionKeysWanita,
+} from '../types';
 import { LikertScale } from './LikertScale';
 
 // Definisi section data
@@ -103,10 +113,16 @@ const sections: Section[] = [
   },
 ];
 
+type ResponseKey = `${number}-${number}-${number}`;
+
+interface CategoryResponses {
+  [key: ResponseKey]: number;
+}
+
 interface ResponseState {
-  [key: string]: {
-    [key: string]: number;
-  };
+  harta: CategoryResponses;
+  tahta: CategoryResponses;
+  wanita: CategoryResponses;
 }
 
 const initialResponses: ResponseState = {
@@ -182,9 +198,24 @@ export default function QuizSection({ onQuizComplete }: QuizSectionProps) {
           const score = getQuestionResponse(sectionIndex, subsectionIndex, questionIndex) || 0;
 
           // Add to subsection total
-          const subsectionKey = Object.keys(results.categoryScores[category])[subsectionIndex];
-          if (subsectionKey !== 'total') {
-            (results.categoryScores[category] as any)[subsectionKey] += score;
+          if (category === 'harta') {
+            const keys: SubsectionKeysHarta[] = ['relasiMateri', 'polaKonsumsi', 'riskBehavior'];
+            const subsectionKey = keys[subsectionIndex];
+            if (subsectionKey) {
+              results.categoryScores.harta[subsectionKey] += score;
+            }
+          } else if (category === 'tahta') {
+            const keys: SubsectionKeysTahta[] = ['relasiKekuasaan', 'polaKompetisi', 'ambisi'];
+            const subsectionKey = keys[subsectionIndex];
+            if (subsectionKey) {
+              results.categoryScores.tahta[subsectionKey] += score;
+            }
+          } else {
+            const keys: SubsectionKeysWanita[] = ['relasiRomantis', 'relasiKeluarga', 'polaAttachment'];
+            const subsectionKey = keys[subsectionIndex];
+            if (subsectionKey) {
+              results.categoryScores.wanita[subsectionKey] += score;
+            }
           }
 
           // Add to category total
