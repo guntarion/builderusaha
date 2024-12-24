@@ -1,0 +1,52 @@
+/* src/app/(protected)/penilaian-wirausaha/branding-approval/components/styles/Result.css */
+
+.results-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.score-bar-container {
+  @apply w-full;
+}
+
+.score-bar {
+  @apply h-6 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.score-fill {
+  @apply h-full bg-blue-600 text-white text-sm flex items-center justify-center transition-all duration-500;
+}
+
+/* Score color variations based on ranges */
+.score-fill[style*='width: 8'] {
+  @apply bg-red-500;
+}
+
+.score-fill[style*='width: 7'] {
+  @apply bg-orange-500;
+}
+
+.score-fill[style*='width: 6'] {
+  @apply bg-yellow-500;
+}
+
+.score-fill[style*='width: 5'] {
+  @apply bg-green-500;
+}
+
+.score-fill[style*='width: 4'] {
+  @apply bg-blue-500;
+}
+
+.score-fill[style*='width: 3'] {
+  @apply bg-purple-500;
+}
+
+@media print {
+  .results-container {
+    @apply shadow-none;
+  }
+
+  .score-bar {
+    @apply border border-gray-300;
+  }
+}
