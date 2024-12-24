@@ -13,11 +13,11 @@ interface Assessment {
 
 const assessments: Assessment[] = [
   {
-    id: 'personality',
-    title: 'Identifikasi Tipe Kepribadian',
-    description: 'Kenali tipe kepribadian dan karakteristik wirausaha Anda.',
-    link: '/penilaian-wirausaha/personality',
-    isAvailable: false,
+    id: 'kesesuaian-bisnis-pmi',
+    title: 'Identifikasi Kesesuaian Usaha ala Pekerja Migran Indonesia',
+    description: 'Kenali kesesuaian Anda dengan tipe usaha yang khas bagi PMI.',
+    link: '/penilaian-wirausaha/kesesuaian-bisnis-pmi',
+    isAvailable: true,
   },
   {
     id: 'branding-approval',

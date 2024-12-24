@@ -1,0 +1,60 @@
+/* src/app/(protected)/penilaian-wirausaha/kesesuaian-bisnis-pmi/styles/Quiz.css */
+.quiz-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.quiz-progress {
+  @apply mb-6;
+}
+
+.progress-bar {
+  @apply h-2 bg-gray-200 rounded-full;
+}
+
+.progress-fill {
+  @apply h-full bg-blue-600 rounded-full transition-all duration-300;
+}
+
+.question-section {
+  @apply bg-white rounded-xl shadow-sm p-8;
+}
+
+.likert-scale {
+  @apply bg-gray-50 p-6 rounded-lg;
+}
+
+.likert-statement {
+  @apply text-gray-700 font-medium mb-4;
+}
+
+.scale-options {
+  @apply grid grid-cols-5 gap-2;
+}
+
+.scale-option {
+  @apply flex flex-col items-center p-3 rounded-lg border hover:bg-gray-100 transition-colors;
+}
+
+.scale-option.selected {
+  @apply bg-blue-50 border-blue-500;
+}
+
+.scale-label {
+  @apply text-xs text-gray-500 text-center mt-1;
+}
+
+@media (max-width: 640px) {
+  .scale-options {
+    @apply grid-cols-3;
+  }
+
+  .scale-label {
+    @apply text-[10px];
+  }
+}
+
+@media (max-width: 480px) {
+  .scale-options {
+    @apply grid-cols-2;
+  }
+}

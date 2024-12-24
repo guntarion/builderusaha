@@ -1,0 +1,54 @@
+/* src/app/(protected)/penilaian-wirausaha/kesesuaian-bisnis-pmi/styles/Result.css */
+.results-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.score-card {
+  @apply bg-white rounded-xl shadow-sm p-6;
+}
+
+.score-bar-container {
+  @apply w-full;
+}
+
+.score-bar {
+  @apply h-6 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.score-fill {
+  @apply h-full bg-blue-600 text-white text-sm flex items-center justify-center transition-all duration-500;
+}
+
+.chart-container {
+  @apply h-[300px] w-full;
+}
+
+.recommendation-card {
+  @apply bg-blue-50 border border-blue-100 rounded-xl p-8 mb-6;
+}
+
+.business-detail {
+  @apply space-y-4;
+}
+
+.detail-section {
+  @apply bg-white bg-opacity-50 rounded-lg p-4;
+}
+
+.detail-list {
+  @apply list-disc list-inside space-y-1 text-gray-600;
+}
+
+@media print {
+  .results-container {
+    @apply shadow-none;
+  }
+
+  .score-bar {
+    @apply border border-gray-300;
+  }
+
+  .chart-container {
+    @apply break-inside-avoid;
+  }
+}
