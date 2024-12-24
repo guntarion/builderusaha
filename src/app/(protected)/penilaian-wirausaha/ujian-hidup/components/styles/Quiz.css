@@ -1,0 +1,40 @@
+/* src/app/(protected)/penilaian-wirausaha/ujian-hidup/components/styles/Quiz.css */
+.likert-scale {
+  @apply bg-gray-50 p-6 rounded-lg;
+}
+
+.likert-scale .statement {
+  @apply text-gray-700 font-medium;
+}
+
+.scale-options {
+  @apply grid grid-cols-5 gap-2;
+}
+
+.scale-option {
+  @apply flex flex-col items-center p-3 rounded-lg border hover:bg-gray-100 transition-colors;
+}
+
+.scale-option.selected {
+  @apply bg-blue-50 border-blue-500;
+}
+
+.scale-label {
+  @apply text-xs text-gray-500 text-center mt-1;
+}
+
+@media (max-width: 640px) {
+  .scale-options {
+    @apply grid-cols-3;
+  }
+
+  .scale-label {
+    @apply text-[10px];
+  }
+}
+
+@media (max-width: 480px) {
+  .scale-options {
+    @apply grid-cols-2;
+  }
+}
