@@ -1,4 +1,5 @@
 // src/app/(marketing)/page.tsx
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Navbar } from '@/components/layout/marketing/Navbar';
 
@@ -40,28 +41,32 @@ export default function HomePage() {
                 title: 'Perjalanan Bisnis',
                 description: 'Panduan lengkap 4 fase pengembangan bisnis dari ide hingga matang',
                 icon: '🚀',
+                href: '/perjalanan-bisnis',
               },
               {
                 title: 'Penilaian Wirausaha',
                 description: 'Analisis kemampuan dan potensi diri sebagai pengusaha',
                 icon: '📊',
+                href: '/penilaian-wirausaha',
               },
               {
                 title: 'Penilaian Bisnis',
                 description: 'Evaluasi kesehatan dan potensi bisnis Anda',
                 icon: '📈',
+                href: '/penilaian-bisnis',
               },
               {
                 title: 'Materi Pembelajaran',
                 description: 'Akses ke video, artikel, dan webinar dari para ahli',
                 icon: '📚',
+                href: '/materi-pembelajaran',
               },
             ].map((feature, index) => (
-              <div key={index} className='bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow'>
+              <Link key={index} href={feature.href} className='block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all'>
                 <div className='text-4xl mb-4'>{feature.icon}</div>
                 <h3 className='text-xl font-semibold mb-2'>{feature.title}</h3>
                 <p className='text-gray-600'>{feature.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
