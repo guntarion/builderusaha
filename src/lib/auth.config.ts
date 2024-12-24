@@ -1,13 +1,9 @@
 // src/lib/auth.config.ts
+
 import type { AuthOptions } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import GoogleProvider from 'next-auth/providers/google';
 import { Session } from 'next-auth';
-
-interface AuthorizedProps {
-  auth: { user: any } | null;
-  request: { nextUrl: URL };
-}
 
 export const authConfig: AuthOptions = {
   providers: [
@@ -20,27 +16,26 @@ export const authConfig: AuthOptions = {
     signIn: '/auth/signin',
   },
   callbacks: {
-    signIn({ user, account, profile, email, credentials }) {
-      const isLoggedIn = !!user;
-      const isProtected = account?.provider === 'google';
-
-      if (isProtected && !isLoggedIn) {
-        return '/auth/signin';
+    async signIn({ user, account, profile }) {
+      if (account?.provider === 'google') {
+        return true;
       }
-
-      return true;
+      return false;
     },
-    jwt({ token, profile }: { token: JWT; profile?: any }) {
-      if (profile) {
-        token.id = profile.sub;
+    async jwt({ token, user, account, profile }) {
+      if (user) {
+        token.id = user.id;
       }
       return token;
     },
-    session({ session, token }: { session: Session; token: JWT }) {
-      if (session?.user && token?.id) {
+    async session({ session, token }) {
+      if (session?.user) {
         session.user.id = token.id as string;
       }
       return session;
     },
+  },
+  session: {
+    strategy: 'jwt',
   },
 };

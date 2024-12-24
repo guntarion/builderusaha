@@ -1,3 +1,5 @@
+// src\lib\auth.ts
+
 import { getServerSession } from 'next-auth';
 import { authConfig } from './auth.config';
 

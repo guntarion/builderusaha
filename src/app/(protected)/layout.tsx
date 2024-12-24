@@ -1,3 +1,4 @@
+// src\app\(protected)\layout.tsx
 import { auth } from '../../lib/auth';
 import { redirect } from 'next/navigation';
 import { Navbar } from '../../components/layout/protected/Navbar';
