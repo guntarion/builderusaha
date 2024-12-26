@@ -1,0 +1,133 @@
+/* src/app/(protected)/penilaian-wirausaha/financial-literacy/components/styles/Quiz.css */
+
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Progress bar styling */
+.progress-bar {
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #2563eb;
+  transition: width 0.3s ease;
+}
+
+/* Question styling */
+.question-item {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.question-item button {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background-color: white;
+  color: #1f2937;
+}
+
+/* Unselected button hover state */
+.question-item button:not(.selected):hover {
+  border-color: #bfdbfe;
+  background-color: #f8fafc;
+}
+
+/* Selected state */
+.question-item button.selected {
+  background-color: #2563eb !important; /* Dark blue */
+  color: white !important;
+  border-color: #2563eb !important;
+  font-weight: 500;
+}
+
+/* Selected button hover state */
+.question-item button.selected:hover {
+  background-color: #1d4ed8 !important; /* Slightly darker blue */
+  border-color: #1d4ed8 !important;
+}
+
+/* Reflection section styling */
+.reflection-question {
+  margin-bottom: 2rem;
+}
+
+.reflection-question textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.reflection-question textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error message styling */
+.error-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #fee2e2;
+  border-radius: 0.5rem;
+  color: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .quiz-container {
+    padding: 1rem;
+  }
+
+  .question-item {
+    padding: 1rem;
+  }
+
+  .nav-button {
+    padding: 0.5rem 1rem;
+  }
+}
+
+.question-item button.selected:hover {
+  /* For Option 1 */
+  background-color: #1d4ed8; /* slightly darker blue */
+
+  /* For Option 2 */
+  /*
+  background-color: #93c5fd;
+  */
+}

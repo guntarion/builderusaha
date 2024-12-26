@@ -33,6 +33,13 @@ const assessments: Assessment[] = [
     link: '/penilaian-wirausaha/ujian-hidup',
     isAvailable: true,
   },
+  {
+    id: 'financial-literacy',
+    title: 'Literasi Keuangan Wirausaha',
+    description: 'Evaluasi pemahaman dan kesiapan Anda dalam mengelola aspek keuangan bisnis.',
+    link: '/penilaian-wirausaha/financial-literacy',
+    isAvailable: true,
+  },
 ];
 
 export default async function EntrepreneurAssessmentPage() {
