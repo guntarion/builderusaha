@@ -1,0 +1,87 @@
+/* src/app/(protected)/penilaian-bisnis/fase-bisnis/components/styles/Quiz.css */
+
+.quiz-container {
+  @apply max-w-4xl mx-auto;
+}
+
+.question-item {
+  @apply bg-gray-50 p-6 rounded-lg;
+}
+
+/* Likert Scale Styling */
+.likert-scale {
+  @apply space-y-4;
+}
+
+.likert-options {
+  @apply grid grid-cols-5 gap-2;
+}
+
+.likert-option {
+  @apply flex flex-col items-center p-3 rounded-lg border transition-colors text-center;
+}
+
+.likert-option:hover:not(.selected) {
+  @apply bg-gray-100;
+}
+
+.likert-option.selected {
+  @apply bg-blue-50 border-blue-500;
+}
+
+.likert-label {
+  @apply text-xs text-gray-500 mt-1;
+}
+
+/* Multiple Choice Styling */
+.multiple-choice {
+  @apply space-y-2;
+}
+
+.choice-option {
+  @apply w-full p-3 text-left rounded-lg border transition-colors;
+}
+
+.choice-option:hover:not(.selected) {
+  @apply bg-gray-100;
+}
+
+.choice-option.selected {
+  @apply bg-blue-50 border-blue-500;
+}
+
+/* Numeric Input Styling */
+.numeric-input {
+  @apply w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500;
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+  @apply transition-all duration-300 ease-in-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+  .likert-options {
+    @apply grid-cols-3;
+  }
+
+  .likert-label {
+    @apply text-[10px];
+  }
+}
+
+@media (max-width: 480px) {
+  .likert-options {
+    @apply grid-cols-2;
+  }
+
+  .question-item {
+    @apply p-4;
+  }
+}
+
+/* Error State */
+.error-message {
+  @apply text-red-600 bg-red-50 p-3 rounded-lg text-sm mt-4;
+}

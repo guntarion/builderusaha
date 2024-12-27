@@ -1,0 +1,137 @@
+/* src/app/(protected)/penilaian-bisnis/fase-bisnis/components/styles/Result.css */
+
+.results-container {
+  @apply max-w-4xl mx-auto;
+}
+
+/* Score Bars */
+.score-bar-container {
+  @apply w-full;
+}
+
+.score-bar {
+  @apply h-6 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.score-fill {
+  @apply h-full bg-blue-600 text-white text-sm flex items-center justify-center transition-all duration-500;
+}
+
+/* Score color variations based on percentage */
+.score-fill[style*='width: 8'] {
+  @apply bg-green-500;
+}
+
+.score-fill[style*='width: 7'] {
+  @apply bg-blue-500;
+}
+
+.score-fill[style*='width: 6'] {
+  @apply bg-yellow-500;
+}
+
+.score-fill[style*='width: 5'] {
+  @apply bg-orange-500;
+}
+
+.score-fill[style*='width: 4'] {
+  @apply bg-red-500;
+}
+
+/* Category Cards */
+.category-card {
+  @apply bg-gray-50 p-6 rounded-lg transition-all duration-200;
+}
+
+.category-card:hover {
+  @apply shadow-md;
+}
+
+/* Phase Indicator */
+.phase-indicator {
+  @apply relative flex items-center justify-between mb-8;
+}
+
+.phase-step {
+  @apply flex-1 relative;
+}
+
+.phase-dot {
+  @apply w-8 h-8 rounded-full border-4 bg-white transition-colors;
+}
+
+.phase-dot.active {
+  @apply border-blue-500 bg-blue-500;
+}
+
+.phase-dot.completed {
+  @apply border-green-500 bg-green-500;
+}
+
+.phase-line {
+  @apply absolute top-4 left-0 right-0 h-0.5 bg-gray-200 -z-10;
+}
+
+/* Recommendation Cards */
+.recommendation-card {
+  @apply bg-white rounded-lg border p-6 transition-all duration-200;
+}
+
+.recommendation-card:hover {
+  @apply shadow-md border-blue-200;
+}
+
+.priority-high {
+  @apply border-l-4 border-red-500;
+}
+
+.priority-medium {
+  @apply border-l-4 border-yellow-500;
+}
+
+.priority-low {
+  @apply border-l-4 border-blue-500;
+}
+
+/* Strength/Improvement Areas */
+.strength-area {
+  @apply bg-green-50 p-4 rounded-lg border border-green-200;
+}
+
+.improvement-area {
+  @apply bg-orange-50 p-4 rounded-lg border border-orange-200;
+}
+
+/* Print Styles */
+@media print {
+  .results-container {
+    @apply shadow-none;
+  }
+
+  .score-bar {
+    @apply border border-gray-300;
+  }
+
+  .tab-navigation {
+    @apply hidden;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .phase-indicator {
+    @apply flex-col;
+  }
+
+  .phase-step {
+    @apply mb-4;
+  }
+
+  .phase-line {
+    @apply hidden;
+  }
+}
