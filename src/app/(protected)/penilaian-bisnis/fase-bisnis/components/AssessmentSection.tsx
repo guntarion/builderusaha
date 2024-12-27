@@ -40,6 +40,7 @@ export default function AssessmentSection({ onComplete }: AssessmentSectionProps
     }
 
     if (currentCategoryIndex < assessmentCategories.length - 1) {
+      console.log('Submitting responses:', responses);
       setCurrentCategoryIndex((prev) => prev + 1);
       window.scrollTo(0, 0);
     } else {

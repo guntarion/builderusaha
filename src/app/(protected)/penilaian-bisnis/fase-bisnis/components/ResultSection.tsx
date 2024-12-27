@@ -14,6 +14,30 @@ export default function ResultSection({ result, onBackToIntro }: ResultSectionPr
   const [activeTab, setActiveTab] = useState<'overview' | 'recommendations' | 'metrics'>('overview');
   const currentPhaseInfo = phaseDefinitions[result.currentPhase];
 
+  if (!result) {
+    console.error('No result data provided to ResultSection');
+    return (
+      <div className='bg-white rounded-xl shadow-sm p-8'>
+        <p className='text-red-600'>Error: Hasil asesmen tidak tersedia</p>
+        <button onClick={onBackToIntro} className='mt-4 px-6 py-2 border rounded-lg hover:bg-gray-50'>
+          Kembali ke Halaman Utama
+        </button>
+      </div>
+    );
+  }
+
+  if (!currentPhaseInfo) {
+    console.error('Phase info not found for:', result.currentPhase);
+    return (
+      <div className='bg-white rounded-xl shadow-sm p-8'>
+        <p className='text-red-600'>Error: Informasi fase tidak tersedia</p>
+        <button onClick={onBackToIntro} className='mt-4 px-6 py-2 border rounded-lg hover:bg-gray-50'>
+          Kembali ke Halaman Utama
+        </button>
+      </div>
+    );
+  }
+
   const TabButton = ({ tab, label }: { tab: typeof activeTab; label: string }) => (
     <button
       onClick={() => setActiveTab(tab)}

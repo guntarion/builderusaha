@@ -5,6 +5,7 @@ import { useState } from 'react';
 import AssessmentSection from './components/AssessmentSection';
 import ResultSection from './components/ResultSection';
 import type { AssessmentResponse, AssessmentResult } from './data/types';
+import { calculatePhaseResult } from './utils/calculatePhase';
 
 export default function BusinessPhaseAssessment() {
   const [showQuiz, setShowQuiz] = useState(false);
@@ -16,9 +17,8 @@ export default function BusinessPhaseAssessment() {
   };
 
   const handleAssessmentComplete = (responses: AssessmentResponse) => {
-    // We'll implement this later with actual calculation
-    // const result = calculatePhaseResult(responses);
-    // setAssessmentResult(result);
+    const result = calculatePhaseResult(responses);
+    setAssessmentResult(result);
     setShowQuiz(false);
     setShowResult(true);
   };

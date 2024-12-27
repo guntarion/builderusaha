@@ -27,19 +27,26 @@ export function calculatePhaseResult(responses: AssessmentResponse): AssessmentR
     category.questions.forEach((question) => {
       const response = Number(responses[question.id]);
       if (!isNaN(response)) {
-        categoryScore += response * question.weight;
+        // Normalize the response to be between 0-100
+        // Assuming responses are 0-4 (5 options)
+        const normalizedResponse = response * 25; // This makes each answer worth 0, 25, 50, 75, or 100
+        categoryScore += normalizedResponse * question.weight;
         categoryWeight += question.weight;
         totalWeight += question.weight;
       }
     });
 
-    categoryScores[category.id] = categoryWeight > 0 ? (categoryScore / categoryWeight) * 100 : 0;
+    // Calculate category score as percentage
+    categoryScores[category.id] =
+      categoryWeight > 0
+        ? Math.min(categoryScore / categoryWeight, 100) // Ensure it doesn't exceed 100
+        : 0;
 
     overallScore += categoryScore;
   });
 
-  // Normalize overall score
-  overallScore = totalWeight > 0 ? (overallScore / totalWeight) * 100 : 0;
+  // Normalize overall score to be between 0-100
+  overallScore = totalWeight > 0 ? Math.min(overallScore / totalWeight, 100) : 0;
 
   // Determine current phase based on overall score
   const currentPhase = determinePhase(overallScore);
@@ -57,16 +64,17 @@ export function calculatePhaseResult(responses: AssessmentResponse): AssessmentR
   };
 }
 
+// Update the determinePhase function
 function determinePhase(score: number): BusinessPhase {
-  const normalizedScore = score * 1.6; // Scale to match phase thresholds (0-160)
-
-  for (const [phase, threshold] of Object.entries(PHASE_THRESHOLDS)) {
-    if (normalizedScore >= threshold.min && normalizedScore <= threshold.max) {
-      return phase as BusinessPhase;
-    }
-  }
-
-  return 'PHASE_1_1'; // Default to first phase if score is too low
+  // Map 0-100 score to phase thresholds
+  if (score < 12.5) return 'PHASE_1_1';
+  if (score < 25) return 'PHASE_1_2';
+  if (score < 37.5) return 'PHASE_2_1';
+  if (score < 50) return 'PHASE_2_2';
+  if (score < 62.5) return 'PHASE_3_1';
+  if (score < 75) return 'PHASE_3_2';
+  if (score < 87.5) return 'PHASE_4_1';
+  return 'PHASE_4_2';
 }
 
 function analyzeNextPhaseGap(currentPhase: BusinessPhase, categoryScores: { [category: string]: number }) {
