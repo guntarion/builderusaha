@@ -1,0 +1,52 @@
+/* src/app/(protected)/penilaian-bisnis/pitch-readiness/components/styles/Result.css */
+
+.results-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.score-bar {
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.score-bar .score-fill {
+  height: 100%;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  transition: width 0.5s ease-in-out;
+}
+
+.recommendation-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #f9fafb;
+}
+
+.recommendation-card:hover {
+  border-color: #dbeafe;
+}
+
+@media print {
+  .results-container {
+    max-width: none;
+  }
+
+  button {
+    display: none;
+  }
+
+  .results-container {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+}

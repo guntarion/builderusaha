@@ -1,0 +1,158 @@
+/* src/app/(protected)/penilaian-bisnis/team-dynamics/components/styles/Result.css */
+
+.results-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Score bar styling */
+.score-bar {
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.score-bar .score-fill {
+  height: 100%;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Section card styling */
+.section-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #f9fafb;
+}
+
+.section-card:hover {
+  border-color: #dbeafe;
+}
+
+/* Recommendations styling */
+.recommendation-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Print-specific styles */
+@media print {
+  .results-container {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .no-print {
+    display: none;
+  }
+
+  .score-bar {
+    border: 1px solid #e5e7eb;
+  }
+
+  .score-bar .score-fill {
+    border: 1px solid #2563eb;
+  }
+
+  body {
+    color: black;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Ensure background colors print */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Adjust font sizes for print */
+  h2 {
+    font-size: 24px !important;
+  }
+
+  h3 {
+    font-size: 20px !important;
+  }
+
+  h4 {
+    font-size: 16px !important;
+  }
+
+  p,
+  li {
+    font-size: 14px !important;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .results-container {
+    padding: 1rem;
+  }
+
+  .section-card {
+    padding: 1rem;
+  }
+
+  .flex-col-mobile {
+    flex-direction: column;
+  }
+
+  .text-sm-mobile {
+    font-size: 0.875rem;
+  }
+}
+
+/* Animation for score bars */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.score-fill {
+  animation: fillBar 1s ease-out;
+}
+
+/* Level indicator styles */
+.level-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.level-indicator.weak {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.level-indicator.moderate {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.level-indicator.strong {
+  background-color: #dcfce7;
+  color: #16a34a;
+}

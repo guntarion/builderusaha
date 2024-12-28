@@ -1,0 +1,65 @@
+/* src/app/(protected)/penilaian-bisnis/team-dynamics/components/styles/Quiz.css */
+
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-item {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.question-item:hover {
+  border-color: #dbeafe;
+}
+
+/* Option button styles */
+button.scale-option {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+button.scale-option:hover {
+  border-color: #93c5fd;
+  background-color: #f8fafc;
+}
+
+button.scale-option.selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+/* Progress bar animation */
+.progress-bar {
+  height: 0.5rem;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar .progress-fill {
+  height: 100%;
+  background-color: #2563eb;
+  border-radius: 9999px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .question-item {
+    padding: 1rem;
+  }
+
+  button.scale-option {
+    padding: 0.75rem;
+  }
+}

@@ -16,7 +16,7 @@ interface Assessment {
 const assessments: Assessment[] = [
   {
     id: 'kesesuaian-bisnis-pmi',
-    title: 'Identifikasi Kesesuaian Usaha ala Pekerja Migran Indonesia',
+    title: 'Kesesuaian Usaha ala Pekerja Migran Indonesia',
     description: 'Kenali kesesuaian Anda dengan tipe usaha yang khas bagi PMI.',
     link: '/penilaian-wirausaha/kesesuaian-bisnis-pmi',
     isAvailable: true,
@@ -25,7 +25,7 @@ const assessments: Assessment[] = [
   {
     id: 'branding-approval',
     title: 'Sikap Branding dan Pencarian Approval',
-    description: 'Evaluasi praktik personal branding dan pola pencarian validasi sosial Anda.',
+    description: 'Antara personal branding dan pencarian validasi sosial.',
     link: '/penilaian-wirausaha/branding-approval',
     isAvailable: true,
     imageUrl: '/images/assessments/asesmen-wirausaha/branding-approval-thumb.jpg',

@@ -1,13 +1,13 @@
-// src/app/(protected)/penilaian-bisnis/pitch-readiness/page.tsx
+// src/app/(protected)/penilaian-bisnis/team-dynamics/page.tsx
 'use client';
 
 import { useState } from 'react';
 import AssessmentSection from './components/AssessmentSection';
 import ResultSection from './components/ResultSection';
 import type { AssessmentResponse, AssessmentResult } from './types';
-import { calculatePitchReadiness } from './utils/calculatePitchReadiness';
+import { calculateTeamDynamics } from './utils/calculateTeamDynamics';
 
-export default function PitchReadinessAssessment() {
+export default function TeamDynamicsAssessment() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [assessmentResult, setAssessmentResult] = useState<AssessmentResult | null>(null);
@@ -17,7 +17,7 @@ export default function PitchReadinessAssessment() {
   };
 
   const handleAssessmentComplete = (responses: AssessmentResponse) => {
-    const result = calculatePitchReadiness(responses);
+    const result = calculateTeamDynamics(responses);
     setAssessmentResult(result);
     setShowQuiz(false);
     setShowResult(true);
@@ -34,32 +34,33 @@ export default function PitchReadinessAssessment() {
       {!showQuiz && !showResult ? (
         <div className='bg-white rounded-xl shadow-sm p-8'>
           <div className='max-w-3xl mx-auto'>
-            <h1 className='text-3xl font-bold text-gray-900 mb-6'>Asesmen Kesiapan Pitching</h1>
+            <h1 className='text-3xl font-bold text-gray-900 mb-6'>Asesmen Dinamika Tim</h1>
 
             <p className='text-gray-600 text-lg mb-8'>
-              Evaluasi seberapa siap materi dan kemampuan presentasi bisnis Anda untuk menghadapi investor potensial.
+              Evaluasi menyeluruh tentang kesehatan dan efektivitas tim Anda dalam menjalankan bisnis. Hasil asesmen akan membantu mengidentifikasi
+              kekuatan tim dan area yang perlu ditingkatkan.
             </p>
 
-            {/* Evaluation Areas */}
+            {/* Assessment Areas */}
             <div className='mb-8'>
               <h2 className='text-xl font-semibold text-gray-900 mb-4'>Area Evaluasi:</h2>
               <div className='grid gap-4'>
                 {[
                   {
-                    area: 'Pitch Deck',
-                    aspects: ['Kelengkapan Materi', 'Visual Design', 'Story Flow'],
+                    area: 'Kolaborasi & Komunikasi',
+                    aspects: ['Kualitas Komunikasi', 'Kolaborasi Tim', 'Problem Solving Bersama'],
                   },
                   {
-                    area: 'Business Model',
-                    aspects: ['Value Proposition', 'Market Analysis', 'Revenue Model'],
+                    area: 'Kepemimpinan & Pengambilan Keputusan',
+                    aspects: ['Gaya Kepemimpinan', 'Proses Keputusan', 'Delegasi Tugas'],
                   },
                   {
-                    area: 'Financial Readiness',
-                    aspects: ['Financial Metrics', 'Projections', 'Funding Ask'],
+                    area: 'Kinerja & Produktivitas',
+                    aspects: ['Manajemen Waktu', 'Pencapaian Target', 'Kualitas Kerja'],
                   },
                   {
-                    area: 'Presentation Skills',
-                    aspects: ['Delivery Style', 'Q&A Readiness', 'Time Management'],
+                    area: 'Budaya & Engagement',
+                    aspects: ['Nilai-nilai Tim', 'Motivasi Anggota', 'Keterlibatan Tim'],
                   },
                 ].map((item, index) => (
                   <div key={index} className='bg-gray-50 p-4 rounded-lg'>
@@ -79,10 +80,10 @@ export default function PitchReadinessAssessment() {
               <h2 className='text-xl font-semibold text-gray-900 mb-4'>Manfaat Asesmen:</h2>
               <ul className='grid gap-3'>
                 {[
-                  'Evaluasi kesiapan pitch deck dan materi presentasi',
-                  'Identifikasi area yang perlu diperkuat',
-                  'Rekomendasi perbaikan spesifik',
-                  'Panduan persiapan menghadapi investor',
+                  'Identifikasi kekuatan dan kelemahan tim',
+                  'Rekomendasi pengembangan tim yang spesifik',
+                  'Panduan peningkatan efektivitas kolaborasi',
+                  'Evaluasi kesehatan budaya tim',
                 ].map((benefit, index) => (
                   <li key={index} className='flex items-start gap-3'>
                     <span className='text-blue-500 mt-1'>✓</span>

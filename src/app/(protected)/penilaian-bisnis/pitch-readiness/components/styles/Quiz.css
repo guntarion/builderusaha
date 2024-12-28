@@ -1,0 +1,49 @@
+/* src/app/(protected)/penilaian-bisnis/pitch-readiness/components/styles/Quiz.css */
+
+.quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.question-item {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.question-item:hover {
+  border-color: #dbeafe;
+}
+
+.scale-options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+button.scale-option {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+}
+
+button.scale-option:hover {
+  border-color: #93c5fd;
+  background-color: #f8fafc;
+}
+
+button.scale-option.selected {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}

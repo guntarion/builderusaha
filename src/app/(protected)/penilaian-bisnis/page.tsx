@@ -17,7 +17,7 @@ const assessments: Assessment[] = [
   {
     id: 'fase-bisnis',
     title: 'Identifikasi Fase Bisnis',
-    description: 'Kenali fase bisnis Anda saat ini dan dapatkan panduan untuk naik ke level berikutnya.',
+    description: 'Kenali fase bisnis saat ini dengan panduan untuk naik level.',
     link: '/penilaian-bisnis/fase-bisnis',
     isAvailable: true,
     imageUrl: '/images/assessments/asesmen-bisnis/fase-bisnis-thumb.jpg',
@@ -27,8 +27,16 @@ const assessments: Assessment[] = [
     title: 'Kesiapan Pitching',
     description: 'Evaluasi kesiapan materi dan presentasi bisnis Anda untuk investor.',
     link: '/penilaian-bisnis/pitch-readiness',
-    isAvailable: false,
+    isAvailable: true,
     imageUrl: '/images/assessments/asesmen-bisnis/pitch-readiness-thumb.jpg',
+  },
+  {
+    id: 'team-dynamics',
+    title: 'Dinamika Tim',
+    description: 'Evaluasi efektivitas dan kinerja tim dalam menjalankan bisnis.',
+    link: '/penilaian-bisnis/team-dynamics',
+    isAvailable: true,
+    imageUrl: '/images/assessments/asesmen-bisnis/team-dynamics-thumb.jpg',
   },
   {
     id: 'kesehatan-bisnis',
@@ -46,14 +54,7 @@ const assessments: Assessment[] = [
     isAvailable: false,
     imageUrl: '/images/assessments/asesmen-bisnis/potensi-pertumbuhan-thumb.jpg',
   },
-  {
-    id: 'team-dynamics',
-    title: 'Dinamika Tim',
-    description: 'Evaluasi efektivitas dan kinerja tim dalam menjalankan bisnis.',
-    link: '/penilaian-bisnis/team-dynamics',
-    isAvailable: false,
-    imageUrl: '/images/assessments/asesmen-bisnis/team-dynamics-thumb.jpg',
-  },
+
   {
     id: 'innovation-readiness',
     title: 'Kesiapan Inovasi',
