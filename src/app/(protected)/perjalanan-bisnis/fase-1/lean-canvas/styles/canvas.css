@@ -1,0 +1,61 @@
+/* src/app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/styles/canvas.css */
+
+.lean-canvas-container {
+  @apply max-w-7xl mx-auto px-4 py-8;
+}
+
+.lean-canvas-header {
+  @apply mb-8;
+}
+
+.lean-canvas-header h1 {
+  @apply text-3xl font-bold mb-2;
+}
+
+.lean-canvas-layout {
+  @apply flex gap-6;
+}
+
+.lean-canvas-main {
+  @apply flex-grow;
+}
+
+.canvas-grid {
+  @apply grid grid-cols-3 gap-4 bg-white rounded-xl p-6 shadow-sm;
+}
+
+.canvas-section {
+  @apply border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer;
+}
+
+.canvas-section.active {
+  @apply ring-2 ring-blue-500;
+}
+
+.canvas-section.mandatory {
+  @apply border-blue-200 bg-blue-50;
+}
+
+.section-header {
+  @apply flex justify-between items-center mb-2;
+}
+
+.section-header h3 {
+  @apply font-semibold;
+}
+
+.mandatory-badge {
+  @apply text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full;
+}
+
+.section-input {
+  @apply w-full h-32 p-2 border rounded resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.ai-suggestions {
+  @apply mt-2 space-y-2;
+}
+
+.suggestion-chip {
+  @apply text-sm bg-gray-100 px-3 py-1 rounded-full hover:bg-gray-200 cursor-pointer;
+}
