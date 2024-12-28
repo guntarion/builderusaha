@@ -23,7 +23,7 @@ export default async function BusinessJourneyPage() {
       icon: '📝',
       description: 'Siapkan rencana dan luncurkan bisnis Anda',
       link: '/perjalanan-bisnis/fase-2',
-      isAvailable: false,
+      isAvailable: true,
     },
     {
       phase: 'Pertumbuhan & Pengembangan',

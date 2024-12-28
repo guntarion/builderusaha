@@ -1,0 +1,113 @@
+/* src/app/(protected)/perjalanan-bisnis/fase-2/mvp-designer/styles/analysis.css */
+
+.analysis-container {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+}
+
+.analysis-content {
+  @apply bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden;
+}
+
+.analysis-section {
+  @apply space-y-4 mb-8 whitespace-pre-line;
+}
+
+.prose {
+  @apply text-gray-600;
+}
+
+.prose h3 {
+  @apply text-gray-900 font-semibold mb-4;
+}
+
+.prose ul {
+  @apply space-y-2 list-none pl-4;
+}
+
+.prose ol {
+  @apply space-y-2 list-decimal pl-4;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose-section {
+  @apply mb-6 pb-6 border-b border-gray-200;
+}
+
+.prose-section:last-child {
+  @apply border-b-0 pb-0;
+}
+
+.analysis-header {
+  @apply p-6 border-b flex justify-between items-center;
+}
+
+.analysis-body {
+  @apply p-6 overflow-y-auto;
+}
+
+.analysis-section {
+  @apply space-y-4 mb-8;
+}
+
+.analysis-section-title {
+  @apply text-xl font-semibold;
+}
+
+.analysis-list {
+  @apply space-y-2;
+}
+
+.analysis-list-item {
+  @apply flex items-start gap-2 text-gray-600;
+}
+
+.analysis-badge {
+  @apply px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.analysis-summary {
+  @apply bg-blue-50 p-4 rounded-lg mb-6;
+}
+
+.analysis-tldr {
+  @apply bg-yellow-50 p-4 rounded-lg mb-6 border-l-4 border-yellow-400;
+}
+
+/* Animation for analysis sections */
+.analysis-fade-in {
+  animation: analysisSlideIn 0.3s ease-out forwards;
+}
+
+@keyframes analysisSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Print styles for analysis */
+@media print {
+  .analysis-container {
+    @apply relative bg-transparent p-0;
+    height: auto;
+  }
+
+  .analysis-content {
+    @apply shadow-none max-h-none overflow-visible;
+  }
+
+  .analysis-header button {
+    @apply hidden;
+  }
+
+  .analysis-body {
+    @apply overflow-visible;
+  }
+}

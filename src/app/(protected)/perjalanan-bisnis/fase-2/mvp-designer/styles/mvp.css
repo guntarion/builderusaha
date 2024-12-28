@@ -1,0 +1,225 @@
+/* src/app/(protected)/perjalanan-bisnis/fase-2/mvp-designer/styles/mvp.css */
+
+/* Container styles */
+.mvp-designer-container {
+  @apply max-w-7xl mx-auto px-4 py-8;
+}
+
+/* Card and section styles */
+.mvp-card {
+  @apply bg-white rounded-xl shadow-sm p-6 hover:shadow-md transition-shadow;
+}
+
+.mvp-section {
+  @apply space-y-6;
+}
+
+/* Navigation styles */
+.mvp-nav {
+  @apply flex space-x-2 overflow-x-auto pb-2;
+}
+
+.mvp-nav-item {
+  @apply px-4 py-2 rounded-lg flex items-center gap-2 whitespace-nowrap;
+}
+
+.mvp-nav-item.active {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.mvp-nav-item:not(.active) {
+  @apply text-gray-600 hover:bg-gray-100;
+}
+
+/* Form styles */
+.mvp-form-group {
+  @apply space-y-4;
+}
+
+.mvp-label {
+  @apply block text-gray-700 font-medium mb-2;
+}
+
+.mvp-input {
+  @apply w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+.mvp-textarea {
+  @apply w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none;
+}
+
+.mvp-select {
+  @apply w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+/* Button styles */
+.mvp-button {
+  @apply px-4 py-2 rounded-lg transition-colors;
+}
+
+.mvp-button-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.mvp-button-secondary {
+  @apply text-gray-600 hover:text-gray-800;
+}
+
+.mvp-button-danger {
+  @apply text-red-600 hover:text-red-700;
+}
+
+/* Timeline styles */
+.mvp-timeline {
+  @apply relative space-y-6;
+}
+
+.mvp-timeline-line {
+  @apply absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200;
+}
+
+.mvp-timeline-item {
+  @apply relative pl-8 py-4;
+}
+
+.mvp-timeline-dot {
+  @apply absolute left-2 top-6 w-4 h-4 rounded-full bg-blue-600;
+}
+
+/* Feature matrix styles */
+.feature-grid {
+  @apply grid gap-4;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* Risk assessment styles */
+.risk-severity-badge {
+  @apply px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.risk-severity-critical {
+  @apply bg-red-100 text-red-700;
+}
+
+.risk-severity-high {
+  @apply bg-orange-100 text-orange-700;
+}
+
+.risk-severity-medium {
+  @apply bg-yellow-100 text-yellow-700;
+}
+
+.risk-severity-low {
+  @apply bg-green-100 text-green-700;
+}
+
+/* Validation tracker styles */
+.validation-status {
+  @apply inline-flex items-center px-2 py-1 rounded-full text-sm font-medium;
+}
+
+.validation-status-pending {
+  @apply bg-gray-100 text-gray-700;
+}
+
+.validation-status-inProgress {
+  @apply bg-yellow-100 text-yellow-700;
+}
+
+.validation-status-completed {
+  @apply bg-green-100 text-green-700;
+}
+
+.validation-status-blocked {
+  @apply bg-red-100 text-red-700;
+}
+
+/* Modal styles */
+.mvp-modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+}
+
+.mvp-modal {
+  @apply bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto;
+}
+
+.mvp-modal-header {
+  @apply p-6 border-b;
+}
+
+.mvp-modal-body {
+  @apply p-6;
+}
+
+.mvp-modal-footer {
+  @apply p-6 border-t bg-gray-50 flex justify-end gap-4;
+}
+
+/* Animation styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Tips section styles */
+.mvp-tips {
+  @apply mt-8 p-4 bg-blue-50 rounded-lg;
+}
+
+.mvp-tips-title {
+  @apply text-blue-800 font-medium;
+}
+
+.mvp-tips-list {
+  @apply mt-2 space-y-2 text-blue-700;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .mvp-nav {
+    @apply flex-wrap;
+  }
+
+  .mvp-nav-item {
+    @apply flex-grow text-center justify-center;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print styles */
+@media print {
+  .mvp-designer-container {
+    @apply p-0;
+  }
+
+  .mvp-nav,
+  .mvp-button,
+  .mvp-modal-overlay {
+    display: none;
+  }
+
+  .mvp-card {
+    @apply shadow-none border rounded-none;
+  }
+
+  .mvp-timeline-line {
+    @apply bg-gray-400;
+  }
+
+  .mvp-timeline-dot {
+    @apply bg-gray-600;
+  }
+}
