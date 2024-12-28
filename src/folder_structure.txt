@@ -22,6 +22,7 @@
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/hooks
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/hooks/useCanvasAnalysis.ts
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/lib
+./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/lib/canvasValidation.ts
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/lib/canvasAI.ts
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/lib/canvasTypes.ts
 ./app/(protected)/perjalanan-bisnis/fase-1/lean-canvas/lib/anthropicClient.ts

@@ -13,6 +13,7 @@ export const initialCanvasState: LeanCanvas = {
       example: 'UKM kesulitan mengelola inventory secara akurat',
       isMandatory: true,
       value: '',
+      icon: '🎯', // Target/problem to solve
     },
     customerSegments: {
       id: 'customerSegments',
@@ -22,6 +23,7 @@ export const initialCanvasState: LeanCanvas = {
       example: 'Pemilik toko retail kecil dengan 1-5 karyawan',
       isMandatory: true,
       value: '',
+      icon: '👥', // People/users
     },
     valueProposition: {
       id: 'valueProposition',
@@ -31,6 +33,7 @@ export const initialCanvasState: LeanCanvas = {
       example: 'Sistem inventory realtime tanpa perlu hardware mahal',
       isMandatory: true,
       value: '',
+      icon: '💎', // Diamond/value
     },
     solution: {
       id: 'solution',
@@ -40,33 +43,7 @@ export const initialCanvasState: LeanCanvas = {
       example: 'Aplikasi mobile dengan barcode scanning',
       isMandatory: false,
       value: '',
-    },
-    revenueStreams: {
-      id: 'revenueStreams',
-      title: 'Revenue Streams',
-      description: 'Sumber pendapatan',
-      placeholder: 'Bagaimana Anda menghasilkan pendapatan?',
-      example: 'Subscription bulanan Rp 499k/bulan',
-      isMandatory: false,
-      value: '',
-    },
-    costStructure: {
-      id: 'costStructure',
-      title: 'Cost Structure',
-      description: 'Struktur biaya',
-      placeholder: 'Apa saja biaya utama yang diperlukan?',
-      example: 'Server, marketing, customer support',
-      isMandatory: false,
-      value: '',
-    },
-    keyMetrics: {
-      id: 'keyMetrics',
-      title: 'Key Metrics',
-      description: 'Metrik utama',
-      placeholder: 'Metrik apa yang akan Anda pantau?',
-      example: 'Monthly Active Users, Churn Rate',
-      isMandatory: false,
-      value: '',
+      icon: '⚡', // Lightning/solution
     },
     unfairAdvantage: {
       id: 'unfairAdvantage',
@@ -76,6 +53,7 @@ export const initialCanvasState: LeanCanvas = {
       example: 'Dataset inventory retail 10 tahun',
       isMandatory: false,
       value: '',
+      icon: '🚀', // Rocket/advantage
     },
     channels: {
       id: 'channels',
@@ -85,6 +63,37 @@ export const initialCanvasState: LeanCanvas = {
       example: 'Direct sales, online marketing',
       isMandatory: false,
       value: '',
+      icon: '📢', // Megaphone/channels
+    },
+    revenueStreams: {
+      id: 'revenueStreams',
+      title: 'Revenue Streams',
+      description: 'Sumber pendapatan',
+      placeholder: 'Bagaimana Anda menghasilkan pendapatan?',
+      example: 'Subscription bulanan Rp 499k/bulan',
+      isMandatory: false,
+      value: '',
+      icon: '💰', // Money bag/revenue
+    },
+    costStructure: {
+      id: 'costStructure',
+      title: 'Cost Structure',
+      description: 'Struktur biaya',
+      placeholder: 'Apa saja biaya utama yang diperlukan?',
+      example: 'Server, marketing, customer support',
+      isMandatory: false,
+      value: '',
+      icon: '📊', // Chart/costs
+    },
+    keyMetrics: {
+      id: 'keyMetrics',
+      title: 'Key Metrics',
+      description: 'Metrik utama',
+      placeholder: 'Metrik apa yang akan Anda pantau?',
+      example: 'Monthly Active Users, Churn Rate',
+      isMandatory: false,
+      value: '',
+      icon: '📈', // Chart increasing/metrics
     },
   },
   lastUpdated: new Date(),

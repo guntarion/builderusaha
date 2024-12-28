@@ -13,7 +13,10 @@ export default function CanvasSection({ field, isActive, onSelect, onChange }: C
   return (
     <div className={`canvas-section ${isActive ? 'active' : ''} ${field.isMandatory ? 'mandatory' : ''}`} onClick={onSelect}>
       <div className='section-header'>
-        <h3>{field.title}</h3>
+        <div className='flex items-center gap-2'>
+          <span className='text-xl'>{field.icon}</span>
+          <h3>{field.title}</h3>
+        </div>
         {field.isMandatory && <span className='mandatory-badge'>Required</span>}
       </div>
 

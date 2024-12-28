@@ -11,6 +11,19 @@ export type CanvasFieldType =
   | 'unfairAdvantage'
   | 'channels';
 
+export type GeneratedCanvas = {
+  refinedProblem: string;
+  refinedCustomerSegments: string;
+  refinedValueProposition: string;
+  proposedSolution: string;
+  proposedRevenueStreams: string;
+  proposedCostStructure: string;
+  proposedKeyMetrics: string;
+  proposedUnfairAdvantage: string;
+  proposedChannels: string;
+  explanation: string;
+};
+
 export interface CanvasField {
   id: CanvasFieldType;
   title: string;
@@ -19,6 +32,7 @@ export interface CanvasField {
   example: string;
   isMandatory: boolean;
   value: string;
+  icon: string;
   aiSuggestions?: string[];
 }
 
@@ -27,7 +41,8 @@ export interface LeanCanvas {
   userId: string;
   fields: Record<CanvasFieldType, CanvasField>;
   lastUpdated: Date;
-  status: 'draft' | 'completed';
+  status: 'draft' | 'generated' | 'completed';
+  generatedCanvas?: GeneratedCanvas;
   aiAnalysis?: {
     summary?: string;
     recommendations?: string[];
@@ -44,4 +59,22 @@ export interface AnalysisResult {
   risks: string[];
   nextSteps: string[];
   assumptions: string[];
+}
+
+// New interfaces for generate canvas functionality
+export interface GenerateCanvasRequest {
+  problem: string;
+  customerSegments: string;
+  valueProposition: string;
+  solution?: string;
+  revenueStreams?: string;
+  costStructure?: string;
+  keyMetrics?: string;
+  unfairAdvantage?: string;
+  channels?: string;
+}
+
+export interface GenerateCanvasResponse {
+  canvas: GeneratedCanvas;
+  error?: string;
 }
