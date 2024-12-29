@@ -30,7 +30,7 @@ export default async function BusinessJourneyPage() {
       icon: '📈',
       description: 'Kembangkan dan tingkatkan skala bisnis',
       link: '/perjalanan-bisnis/fase-3',
-      isAvailable: false,
+      isAvailable: true,
     },
     {
       phase: 'Maturitas & Exit',
