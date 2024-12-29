@@ -48,6 +48,59 @@ export interface TeamScaling {
   trainingNeeds: TrainingNeeds;
 }
 
+export interface CompanyInfo {
+  name: string;
+  industry: string;
+  size: string;
+  stage: string;
+}
+
+export interface TeamScalingAssessment {
+  companyInfo: CompanyInfo;
+  currentStructure: TeamStructure;
+  roleDefinitions: RoleDefinition[];
+  hiringTimelines: HiringTimeline[];
+  teamStructures: TeamStructure[];
+  skillsGaps: SkillsGap[];
+  trainingNeeds: TrainingNeeds[];
+}
+
+export interface ScalingPlanSummary {
+  tldr: string;
+  keyRecommendations: string[];
+}
+
+export interface DetailedAnalysis {
+  roles: string;
+  timeline: string;
+  structure: string;
+  skills: string;
+  training: string;
+  budget: string;
+  risks: string;
+}
+
+export interface ActionPlan {
+  steps: string[];
+  timeline: string;
+  responsibilities: string[];
+  immediate: string[];
+  shortTerm: string[];
+  midTerm: string[];
+  longTerm: string[];
+}
+
+export interface GeneratedScalingPlan {
+  summary: ScalingPlanSummary;
+  detailedAnalysis: DetailedAnalysis;
+  roles: RoleDefinition[];
+  timeline: HiringTimeline;
+  structure: TeamStructure;
+  skillsDevelopment: SkillsGap;
+  trainingPrograms: TrainingNeeds[];
+  actionPlan: ActionPlan;
+}
+
 export interface TeamScalingAnalysis {
   roleRecommendations: string[];
   hiringPlan: string[];

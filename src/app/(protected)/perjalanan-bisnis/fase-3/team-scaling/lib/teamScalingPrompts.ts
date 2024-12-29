@@ -1,6 +1,6 @@
 // src/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingPrompts.ts
 
-import { TeamScalingAssessment, RoleDefinition, TrainingNeed, GeneratedScalingPlan } from './TeamScalingTypes';
+import { TeamScalingAssessment, RoleDefinition, TrainingNeeds, GeneratedScalingPlan } from './TeamScalingTypes';
 
 export const SYSTEM_PROMPT = `You are an experienced HR and organizational development consultant 
 helping Indonesian companies scale their teams effectively. Your responses should be in Bahasa 
@@ -32,25 +32,21 @@ export function generateRoleDefinitionPrompt(
 COMPANY CONTEXT:
 Industry: ${companyInfo.industry}
 Stage: ${companyInfo.stage}
-Current Size: ${companyInfo.currentSize}
-Target Size: ${companyInfo.targetSize}
+Size: ${companyInfo.size}
 
 ROLE REQUEST:
 Title: ${roleRequest.title || 'Not specified'}
-Department: ${roleRequest.department || 'Not specified'}
-Initial Description: ${roleRequest.description || 'Not specified'}
+Initial Description: ${roleRequest.responsibilities?.join('\n') || 'Not specified'}
 
 CURRENT TEAM STRUCTURE:
-${currentStructure.departments.map((d) => `${d.name}: ${d.headCount} members`).join('\n')}
+${currentStructure.departments.map((d) => `${d.name}: ${d.roles.length} roles`).join('\n')}
 
 Please provide a detailed role definition including:
-1. Refined role title and description
+1. Refined role title
 2. Key responsibilities
-3. Required and preferred skills
-4. Experience requirements
-5. Market-appropriate salary range for Indonesia
-6. Reporting structure recommendations
-7. Success metrics for this role
+3. Required skills
+4. Experience level
+5. Reporting structure recommendations
 
 Response format:
 <role_definition>
@@ -67,23 +63,18 @@ export function generateStructureOptimizationPrompt(assessment: TeamScalingAsses
   return `Analyze and optimize this team structure:
 
 CURRENT STATE:
-Size: ${assessment.companyInfo.currentSize} to ${assessment.companyInfo.targetSize}
+Size: ${assessment.companyInfo.size}
 Stage: ${assessment.companyInfo.stage}
-Challenges: ${assessment.companyInfo.mainChallenges.join(', ')}
 
 DEPARTMENTS:
-${assessment.currentStructure.departments.map((d) => `${d.name}: ${d.headCount} members`).join('\n')}
-
-SCALING GOALS:
-${assessment.companyInfo.businessGoals.join('\n')}
+${assessment.currentStructure.departments.map((d) => `${d.name}: ${d.roles.length} roles`).join('\n')}
 
 Please provide:
 1. Recommended org structure
 2. Department sizing recommendations
 3. Reporting lines optimization
-4. Span of control analysis
-5. Growth stage transitions
-6. Risk areas and mitigation
+4. Growth stage transitions
+5. Risk areas and mitigation
 
 Format:
 <structure_analysis>
@@ -104,13 +95,10 @@ export function generateSkillsGapPrompt(assessment: TeamScalingAssessment): stri
   return `Analyze the skills gap for this scaling team:
 
 CURRENT SKILLS:
-${assessment.skillsAssessment.currentSkills.map((s) => `${s.name}: ${s.currentTeamCount} members`).join('\n')}
+${assessment.skillsGaps[0].existingSkills.join('\n')}
 
 REQUIRED SKILLS:
-${assessment.skillsAssessment.requiredSkills.map((s) => `${s.name}: ${s.requiredCount} needed`).join('\n')}
-
-BUSINESS CONTEXT:
-${assessment.companyInfo.businessGoals.join('\n')}
+${assessment.skillsGaps[0].requiredSkills.join('\n')}
 
 Please analyze:
 1. Critical skill gaps
@@ -118,7 +106,6 @@ Please analyze:
 3. Prioritized acquisition strategy
 4. Build vs. buy recommendations
 5. Timeline for closing gaps
-6. Market availability assessment
 
 Format:
 <gaps_analysis>
@@ -139,18 +126,16 @@ export function generateTrainingNeedsPrompt(assessment: TeamScalingAssessment): 
   return `Assess training needs for this scaling team:
 
 SKILL GAPS:
-${assessment.skillsAssessment.gaps.map((g) => `${g.skillId}: Gap of ${g.gap} (${g.priority} priority)`).join('\n')}
+${assessment.skillsGaps[0].gapAnalysis.map((g: { skill: string; gapLevel: string }) => `${g.skill}: ${g.gapLevel} priority`).join('\n')}
 
 TEAM COMPOSITION:
-${assessment.currentStructure.departments.map((d) => `${d.name}: ${d.headCount} members`).join('\n')}
+${assessment.currentStructure.departments.map((d) => `${d.name}: ${d.roles.length} roles`).join('\n')}
 
 Please provide:
 1. Priority training areas
 2. Recommended programs
 3. Timeline and milestones
-4. Budget considerations
-5. Success metrics
-6. Implementation approach
+4. Success metrics
 
 Format:
 <training_needs>
@@ -176,26 +161,15 @@ export function parseRoleDefinitionResponse(response: string): RoleDefinition | 
 
     // Extract specific fields using regex
     const title = roleContent.match(/Title: (.*)/)?.[1] || '';
-    const department = roleContent.match(/Department: (.*)/)?.[1] || '';
-    const description = roleContent.match(/Description:\n([\s\S]*?)\n(?=\w)/)?.[1] || '';
-
-    // Continue with other fields...
+    const responsibilities = roleContent.match(/Responsibilities:\n([\s\S]*?)\n(?=\w)/)?.[1]?.split('\n') || [];
+    const requiredSkills = roleContent.match(/Required Skills:\n([\s\S]*?)\n(?=\w)/)?.[1]?.split('\n') || [];
+    const experienceLevel = (roleContent.match(/Experience Level: (.*)/)?.[1] as 'Entry' | 'Mid' | 'Senior') || 'Mid';
 
     return {
-      id: Date.now().toString(),
       title,
-      department,
-      description,
-      // ... map other fields
-      responsibilities: [], // Parse from response
-      requiredSkills: [], // Parse from response
-      preferredSkills: [], // Parse from response
-      experience: {
-        yearsRequired: 0, // Parse from response
-        level: 'mid_level', // Parse from response
-      },
-      priority: 'medium',
-      timeline: 'short_term',
+      responsibilities,
+      requiredSkills,
+      experienceLevel,
     };
   } catch (error) {
     console.error('Error parsing role definition response:', error);
@@ -204,13 +178,24 @@ export function parseRoleDefinitionResponse(response: string): RoleDefinition | 
 }
 
 // Parse Training Needs Response
-export function parseTrainingNeedsResponse(response: string): TrainingNeed[] {
+export function parseTrainingNeedsResponse(response: string): TrainingNeeds[] {
   try {
     const needsMatch = response.match(/<training_needs>([\s\S]*?)<\/training_needs>/);
     if (!needsMatch) return [];
 
-    // Implementation of parsing logic...
-    return [];
+    const trainingContent = needsMatch[1];
+    const programs = trainingContent.match(/Programs:\n([\s\S]*?)\n(?=\w)/)?.[1]?.split('\n') || [];
+
+    return [
+      {
+        trainingPrograms: programs.map((program) => ({
+          name: program,
+          targetRoles: [],
+          duration: '',
+          objectives: [],
+        })),
+      },
+    ];
   } catch (error) {
     console.error('Error parsing training needs response:', error);
     return [];
@@ -231,6 +216,19 @@ export async function generateFullScalingPlan(assessment: TeamScalingAssessment)
         tldr: '',
         keyRecommendations: [],
       },
+      roles: [],
+      timeline: {
+        phases: [],
+      },
+      structure: {
+        departments: [],
+      },
+      skillsDevelopment: {
+        existingSkills: [],
+        requiredSkills: [],
+        gapAnalysis: [],
+      },
+      trainingPrograms: [],
       detailedAnalysis: {
         structure: '',
         roles: '',
@@ -241,6 +239,9 @@ export async function generateFullScalingPlan(assessment: TeamScalingAssessment)
         risks: '',
       },
       actionPlan: {
+        steps: [],
+        timeline: '',
+        responsibilities: [],
         immediate: [],
         shortTerm: [],
         midTerm: [],

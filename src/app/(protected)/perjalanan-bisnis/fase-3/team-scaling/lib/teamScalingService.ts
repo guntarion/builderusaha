@@ -1,7 +1,7 @@
 // src/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService.ts
 
-import { processWithClaude } from '@/lib/anthropicClient';
-import { TeamScalingAssessment, RoleDefinition, TrainingNeed, GeneratedScalingPlan } from './TeamScalingTypes';
+import { processWithClaude } from './anthropicClient';
+import { TeamScalingAssessment, RoleDefinition, TrainingNeeds, GeneratedScalingPlan } from './TeamScalingTypes';
 import {
   SYSTEM_PROMPT,
   generateRoleDefinitionPrompt,
@@ -52,7 +52,7 @@ export async function analyzeSkillsGap(assessment: TeamScalingAssessment): Promi
   }
 }
 
-export async function generateTrainingPlan(assessment: TeamScalingAssessment): Promise<TrainingNeed[]> {
+export async function generateTrainingPlan(assessment: TeamScalingAssessment): Promise<TrainingNeeds[]> {
   try {
     const prompt = generateTrainingNeedsPrompt(assessment);
     const response = await processWithClaude(prompt, SYSTEM_PROMPT);
@@ -89,7 +89,23 @@ export async function generateComprehensiveScalingPlan(assessment: TeamScalingAs
         budget: '',
         risks: '',
       },
+      roles: [],
+      timeline: {
+        phases: [],
+      },
+      structure: {
+        departments: [],
+      },
+      skillsDevelopment: {
+        existingSkills: [],
+        requiredSkills: [],
+        gapAnalysis: [],
+      },
+      trainingPrograms: [],
       actionPlan: {
+        steps: [],
+        timeline: '',
+        responsibilities: [],
         immediate: [],
         shortTerm: [],
         midTerm: [],

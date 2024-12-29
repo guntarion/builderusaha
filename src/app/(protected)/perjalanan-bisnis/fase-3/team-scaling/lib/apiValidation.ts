@@ -1,6 +1,6 @@
 // src/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation.ts
 
-import { TeamScalingAssessment, RoleDefinition, Department, Skill, TrainingNeed } from './TeamScalingTypes';
+import { TeamScalingAssessment, RoleDefinition, CompanyInfo, TeamStructure, SkillsGap, TrainingNeeds } from './TeamScalingTypes';
 
 export class ValidationError extends Error {
   constructor(public errors: string[]) {
@@ -10,19 +10,15 @@ export class ValidationError extends Error {
 }
 
 // Validate company info
-export function validateCompanyInfoRequest(info: TeamScalingAssessment['companyInfo']): string[] {
+export function validateCompanyInfoRequest(info: TeamScalingAssessment['companyInfo']): string[] | null {
   const errors: string[] = [];
 
   if (!info) {
-    return ['Informasi perusahaan wajib diisi'];
+    throw new ValidationError(['Informasi perusahaan wajib diisi']);
   }
 
-  if (typeof info.currentSize !== 'number' || info.currentSize < 1) {
-    errors.push('Ukuran tim saat ini harus minimal 1 orang');
-  }
-
-  if (typeof info.targetSize !== 'number' || info.targetSize <= info.currentSize) {
-    errors.push('Target ukuran tim harus lebih besar dari ukuran saat ini');
+  if (!info.size) {
+    errors.push('Ukuran perusahaan wajib diisi');
   }
 
   if (!info.industry?.trim()) {
@@ -33,31 +29,23 @@ export function validateCompanyInfoRequest(info: TeamScalingAssessment['companyI
     errors.push('Tahap perusahaan wajib diisi');
   }
 
-  if (!Array.isArray(info.mainChallenges) || info.mainChallenges.length === 0) {
-    errors.push('Minimal satu tantangan utama harus diisi');
+  if (!info.stage) {
+    errors.push('Tahap perusahaan wajib diisi');
   }
 
-  if (!Array.isArray(info.businessGoals) || info.businessGoals.length === 0) {
-    errors.push('Minimal satu tujuan bisnis harus diisi');
-  }
-
-  return errors;
+  return errors.length > 0 ? errors : null;
 }
 
 // Validate role definition request
-export function validateRoleRequest(role: Partial<RoleDefinition>): string[] {
+export function validateRoleRequest(role: Partial<RoleDefinition>): string[] | null {
   const errors: string[] = [];
 
   if (!role.title?.trim()) {
     errors.push('Judul peran wajib diisi');
   }
 
-  if (!role.department?.trim()) {
-    errors.push('Departemen wajib diisi');
-  }
-
-  if (!role.description?.trim() || role.description.length < 50) {
-    errors.push('Deskripsi peran harus minimal 50 karakter');
+  if (!role.responsibilities || role.responsibilities.length < 3) {
+    errors.push('Minimal 3 tanggung jawab harus diisi');
   }
 
   if (!Array.isArray(role.responsibilities) || role.responsibilities.length < 3) {
@@ -68,72 +56,58 @@ export function validateRoleRequest(role: Partial<RoleDefinition>): string[] {
     errors.push('Minimal satu skill wajib harus diisi');
   }
 
-  if (role.experience) {
-    if (typeof role.experience.yearsRequired !== 'number' || role.experience.yearsRequired < 0) {
-      errors.push('Pengalaman kerja tidak valid');
-    }
-    if (!role.experience.level) {
-      errors.push('Level senioritas wajib diisi');
-    }
-  } else {
-    errors.push('Informasi pengalaman wajib diisi');
+  if (!role.experienceLevel) {
+    errors.push('Level pengalaman wajib diisi');
   }
 
-  return errors;
+  return errors.length > 0 ? errors : null;
 }
 
 // Validate skills assessment request
-export function validateSkillsRequest(currentSkills: Skill[], requiredSkills: Skill[]): string[] {
+export function validateSkillsRequest(skillsGap: SkillsGap): string[] | null {
   const errors: string[] = [];
 
-  if (!Array.isArray(currentSkills)) {
-    errors.push('Format skills saat ini tidak valid');
+  if (!skillsGap.existingSkills || skillsGap.existingSkills.length === 0) {
+    errors.push('Skills saat ini wajib diisi');
   }
 
-  if (!Array.isArray(requiredSkills)) {
-    errors.push('Format skills yang dibutuhkan tidak valid');
+  if (!skillsGap.requiredSkills || skillsGap.requiredSkills.length === 0) {
+    errors.push('Skills yang dibutuhkan wajib diisi');
   }
 
-  if (requiredSkills.length === 0) {
-    errors.push('Minimal satu skill yang dibutuhkan harus diisi');
+  if (!skillsGap.gapAnalysis || skillsGap.gapAnalysis.length === 0) {
+    errors.push('Analisis gap skills wajib diisi');
   }
 
-  // Validate each required skill
-  requiredSkills.forEach((skill, index) => {
-    if (!skill.name?.trim()) {
-      errors.push(`Nama skill #${index + 1} wajib diisi`);
-    }
-    if (typeof skill.requiredCount !== 'number' || skill.requiredCount < 1) {
-      errors.push(`Jumlah yang dibutuhkan untuk skill "${skill.name}" tidak valid`);
-    }
-  });
-
-  return errors;
+  return errors.length > 0 ? errors : null;
 }
 
 // Validate full assessment request
-export function validateFullAssessment(assessment: TeamScalingAssessment): string[] {
+export function validateFullAssessment(assessment: TeamScalingAssessment): string[] | null {
   const errors: string[] = [];
 
   // Validate company info
-  errors.push(...validateCompanyInfoRequest(assessment.companyInfo));
+  const companyInfoErrors = validateCompanyInfoRequest(assessment.companyInfo);
+  if (companyInfoErrors) {
+    errors.push(...companyInfoErrors);
+  }
 
   // Validate current structure
   if (!assessment.currentStructure.departments || assessment.currentStructure.departments.length === 0) {
     errors.push('Minimal satu departemen harus diisi');
   }
 
-  // Validate scaling plan
-  if (!assessment.scalingPlan.timeline.startDate || !assessment.scalingPlan.timeline.endDate) {
-    errors.push('Timeline scaling harus diisi');
-  }
-
-  if (new Date(assessment.scalingPlan.timeline.endDate) <= new Date(assessment.scalingPlan.timeline.startDate)) {
-    errors.push('Tanggal akhir harus setelah tanggal mulai');
-  }
-
   // Validate skills assessment
-  errors.push(...validateSkillsRequest(assessment.skillsAssessment.currentSkills, assessment.skillsAssessment.requiredSkills));
+  if (assessment.skillsGaps.length === 0) {
+    errors.push('Minimal satu skills gap harus diisi');
+  }
 
-  return errors;
+  assessment.skillsGaps.forEach((skillsGap) => {
+    const skillsErrors = validateSkillsRequest(skillsGap);
+    if (skillsErrors) {
+      errors.push(...skillsErrors);
+    }
+  });
+
+  return errors.length > 0 ? errors : null;
 }

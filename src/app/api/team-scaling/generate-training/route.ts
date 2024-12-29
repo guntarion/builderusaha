@@ -2,7 +2,7 @@
 
 import { NextResponse } from 'next/server';
 import { generateTrainingPlan } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
-import { checkRateLimit, getCachedValue, setCachedValue } from '@/lib/rateLimit';
+import { checkRateLimit, getCachedValue, setCachedValue } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/rateLimit';
 import { ValidationError } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation';
 
 function validateTrainingRequest(assessment: any): string[] {
@@ -92,11 +92,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Validation Error', message: error.errors }, { status: 400 });
     }
 
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+
     return NextResponse.json(
       {
         error: 'Server Error',
         message: 'Gagal membuat rencana training. Silakan coba lagi.',
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined,
+        details: process.env.NODE_ENV === 'development' ? errorMessage : undefined,
       },
       { status: 500 }
     );

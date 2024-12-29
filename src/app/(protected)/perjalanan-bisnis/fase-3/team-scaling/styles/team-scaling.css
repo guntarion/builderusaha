@@ -1,0 +1,59 @@
+.team-scaling-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.team-scaling-container header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.team-scaling-container nav {
+  margin-bottom: 1.5rem;
+}
+
+.team-scaling-container nav button {
+  transition: all 0.2s ease;
+}
+
+.team-scaling-container .section-container {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.team-scaling-container textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.team-scaling-container .analysis-results {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-scaling-container .analysis-results .modal-content {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 800px;
+  width: 90%;
+}
+
+.team-scaling-container .analysis-results ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.team-scaling-container .analysis-results li {
+  margin-bottom: 0.5rem;
+}

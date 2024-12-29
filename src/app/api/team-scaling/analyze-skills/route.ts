@@ -2,7 +2,7 @@
 
 import { NextResponse } from 'next/server';
 import { analyzeSkillsGap } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
-import { checkRateLimit, getCachedValue, setCachedValue } from '@/lib/rateLimit';
+import { checkRateLimit, getCachedValue, setCachedValue } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/rateLimit';
 import { validateSkillsRequest, ValidationError } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation';
 
 export async function POST(request: Request) {
@@ -32,9 +32,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Validation Error', message: validationErrors }, { status: 400 });
     }
 
+    interface Skill {
+      name: string;
+      currentTeamCount?: number;
+      requiredCount?: number;
+    }
+
+    interface SkillsAssessment {
+      currentSkills: Skill[];
+      requiredSkills: Skill[];
+    }
+
+    interface Assessment {
+      skillsAssessment: SkillsAssessment;
+    }
+
     const cacheKey = `skills-gap-${JSON.stringify({
-      current: currentSkills.map((s) => ({ name: s.name, count: s.currentTeamCount })),
-      required: requiredSkills.map((s) => ({ name: s.name, count: s.requiredCount })),
+      current: currentSkills.map((s: Skill) => ({ name: s.name, count: s.currentTeamCount })),
+      required: requiredSkills.map((s: Skill) => ({ name: s.name, count: s.requiredCount })),
     })}`;
 
     const cached = getCachedValue(cacheKey);

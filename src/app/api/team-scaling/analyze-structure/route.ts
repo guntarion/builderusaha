@@ -2,7 +2,7 @@
 
 import { NextResponse } from 'next/server';
 import { analyzeTeamStructure } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
-import { checkRateLimit, getCachedValue, setCachedValue } from '@/lib/rateLimit';
+import { checkRateLimit, getCachedValue, setCachedValue } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/rateLimit';
 import { validateFullAssessment, ValidationError } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation';
 
 export async function POST(request: Request) {
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     const cacheKey = `structure-analysis-${JSON.stringify({
       currentSize: assessment.companyInfo.currentSize,
       targetSize: assessment.companyInfo.targetSize,
-      departments: assessment.currentStructure.departments.map((d) => d.name),
+      departments: assessment.currentStructure.departments.map((d: { name: string }) => d.name),
       stage: assessment.companyInfo.stage,
     })}`;
 

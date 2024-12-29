@@ -3,7 +3,7 @@
 import { NextResponse } from 'next/server';
 import { RoleDefinition } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/TeamScalingTypes';
 import { generateRoleDefinition } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
-import { checkRateLimit, getCachedValue, setCachedValue } from '@/lib/rateLimit';
+import { checkRateLimit, getCachedValue, setCachedValue } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/rateLimit';
 import {
   validateCompanyInfoRequest,
   validateRoleRequest,
