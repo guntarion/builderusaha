@@ -1,6 +1,11 @@
 import { TeamScaling } from './TeamScalingTypes';
 
 export const initialTeamScalingState: TeamScaling = {
+  companyInfo: {
+    industry: '',
+    size: '',
+    stage: '',
+  },
   roleDefinition: {
     title: '',
     responsibilities: [],

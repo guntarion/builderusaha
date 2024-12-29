@@ -1,9 +1,10 @@
 // src/app/api/team-scaling/analyze-full/route.ts
 
 import { NextResponse } from 'next/server';
-import { generateComprehensiveScalingPlan } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
+import { generateComprehensiveScalingPlan } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/teamScalingService';
+console.log('Imported generateComprehensiveScalingPlan:', generateComprehensiveScalingPlan);
 import { checkRateLimit, getCachedValue, setCachedValue } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/rateLimit';
-import { validateFullAssessment, ValidationError } from '@/app/(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation';
+import { validateFullAssessment, ValidationError } from '../../../(protected)/perjalanan-bisnis/fase-3/team-scaling/lib/apiValidation';
 
 export async function POST(request: Request) {
   try {
@@ -28,19 +29,18 @@ export async function POST(request: Request) {
 
     // Comprehensive validation
     const validationErrors = validateFullAssessment(assessment);
-    if (validationErrors.length > 0) {
+    if (validationErrors && validationErrors.length > 0) {
       return NextResponse.json({ error: 'Validation Error', message: validationErrors }, { status: 400 });
     }
 
     // Generate cache key based on crucial assessment data
     const cacheKey = `scaling-plan-${JSON.stringify({
       companyInfo: {
-        size: assessment.companyInfo.currentSize,
-        target: assessment.companyInfo.targetSize,
+        size: assessment.companyInfo.size,
         stage: assessment.companyInfo.stage,
       },
       departments: assessment.currentStructure.departments.length,
-      skillGaps: assessment.skillsAssessment.gaps.length,
+      skillGaps: assessment.skillsGaps.length,
       version: assessment.version,
     })}`;
 
@@ -49,13 +49,22 @@ export async function POST(request: Request) {
       return NextResponse.json(cached);
     }
 
-    const scalingPlan = await generateComprehensiveScalingPlan(assessment);
-    if (!scalingPlan) {
-      throw new Error('Failed to generate comprehensive scaling plan');
-    }
+    try {
+      console.log('Generating scaling plan with assessment:', assessment);
+      const scalingPlan = await generateComprehensiveScalingPlan(assessment);
 
-    setCachedValue(cacheKey, scalingPlan);
-    return NextResponse.json(scalingPlan);
+      if (!scalingPlan) {
+        console.error('Scaling plan generation returned null/undefined');
+        throw new Error('Failed to generate comprehensive scaling plan');
+      }
+
+      console.log('Generated scaling plan:', scalingPlan);
+      setCachedValue(cacheKey, scalingPlan);
+      return NextResponse.json(scalingPlan);
+    } catch (error) {
+      console.error('Error in generateComprehensiveScalingPlan:', error);
+      throw error;
+    }
   } catch (error) {
     console.error('Comprehensive Analysis Error:', error);
 

@@ -41,6 +41,7 @@ export interface TrainingNeeds {
 }
 
 export interface TeamScaling {
+  companyInfo: CompanyInfo;
   roleDefinition: RoleDefinition;
   hiringTimeline: HiringTimeline;
   teamStructure: TeamStructure;
@@ -49,7 +50,6 @@ export interface TeamScaling {
 }
 
 export interface CompanyInfo {
-  name: string;
   industry: string;
   size: string;
   stage: string;

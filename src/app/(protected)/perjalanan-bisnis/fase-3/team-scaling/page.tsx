@@ -14,7 +14,58 @@ import LoadingSpinner from './components/LoadingSpinner';
 import './styles/team-scaling.css';
 
 export default function TeamScalingPage() {
-  const [teamScaling, setTeamScaling] = useState<TeamScaling>(initialTeamScalingState);
+  const [teamScaling, setTeamScaling] = useState<TeamScaling>({
+    companyInfo: {
+      industry: 'Education Technology',
+      size: 'Medium',
+      stage: 'Growth',
+    },
+    roleDefinition: {
+      title: 'Senior Developer',
+      responsibilities: ['Develop core features', 'Mentor junior developers'],
+      requiredSkills: ['JavaScript', 'React', 'Node.js'],
+      experienceLevel: 'Senior',
+    },
+    hiringTimeline: {
+      phases: [
+        {
+          phase: 'Q1 2024',
+          startDate: '2024-01-01',
+          endDate: '2024-03-31',
+          rolesToHire: ['Frontend Developer', 'Backend Developer'],
+        },
+      ],
+    },
+    teamStructure: {
+      departments: [
+        {
+          name: 'Engineering',
+          roles: ['Senior Developer', 'Junior Developer'],
+          reportingTo: 'CTO',
+        },
+      ],
+    },
+    skillsGap: {
+      existingSkills: ['JavaScript', 'HTML'],
+      requiredSkills: ['React', 'Node.js'],
+      gapAnalysis: [
+        {
+          skill: 'React',
+          gapLevel: 'High',
+        },
+      ],
+    },
+    trainingNeeds: {
+      trainingPrograms: [
+        {
+          name: 'React Training',
+          targetRoles: ['Frontend Developers'],
+          duration: '2 weeks',
+          objectives: ['Learn React fundamentals', 'Build React components'],
+        },
+      ],
+    },
+  });
   const [activeSection, setActiveSection] = useState<string>('roleDefinition');
   const [showAnalysis, setShowAnalysis] = useState(false);
 
@@ -68,6 +119,73 @@ export default function TeamScalingPage() {
         <h1 className='text-2xl font-bold'>Team Scaling Assistant</h1>
         <p className='text-gray-600'>Optimalkan tim Anda dengan panduan AI</p>
       </header>
+
+      {/* Company Info Section */}
+      <div className='bg-white rounded-xl shadow-sm p-6 mb-6'>
+        <h2 className='text-xl font-semibold mb-4'>Informasi Perusahaan</h2>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+          <div>
+            <label className='block text-sm font-medium mb-1'>Industri</label>
+            <input
+              type='text'
+              value={teamScaling.companyInfo?.industry || ''}
+              onChange={(e) =>
+                setTeamScaling((prev) => ({
+                  ...prev,
+                  companyInfo: {
+                    ...prev.companyInfo,
+                    industry: e.target.value,
+                  },
+                }))
+              }
+              className='w-full px-3 py-2 border rounded-lg'
+              placeholder='Masukkan industri perusahaan'
+            />
+          </div>
+          <div>
+            <label className='block text-sm font-medium mb-1'>Ukuran Perusahaan</label>
+            <select
+              value={teamScaling.companyInfo?.size || ''}
+              onChange={(e) =>
+                setTeamScaling((prev) => ({
+                  ...prev,
+                  companyInfo: {
+                    ...prev.companyInfo,
+                    size: e.target.value,
+                  },
+                }))
+              }
+              className='w-full px-3 py-2 border rounded-lg'
+            >
+              <option value=''>Pilih ukuran</option>
+              <option value='Small'>Kecil (1-50)</option>
+              <option value='Medium'>Menengah (51-200)</option>
+              <option value='Large'>Besar (201+)</option>
+            </select>
+          </div>
+          <div>
+            <label className='block text-sm font-medium mb-1'>Tahap Perusahaan</label>
+            <select
+              value={teamScaling.companyInfo?.stage || ''}
+              onChange={(e) =>
+                setTeamScaling((prev) => ({
+                  ...prev,
+                  companyInfo: {
+                    ...prev.companyInfo,
+                    stage: e.target.value,
+                  },
+                }))
+              }
+              className='w-full px-3 py-2 border rounded-lg'
+            >
+              <option value=''>Pilih tahap</option>
+              <option value='Startup'>Startup</option>
+              <option value='Growth'>Growth</option>
+              <option value='Mature'>Mature</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
       <div className='mb-6'>
         <nav className='flex space-x-2'>
@@ -139,7 +257,10 @@ export default function TeamScalingPage() {
           analysis={analysis}
           isLoading={isAnalyzing}
           error={analysisError}
-          onClose={() => setShowAnalysis(false)}
+          onClose={() => {
+            console.log('Closing analysis modal');
+            setShowAnalysis(false);
+          }}
           onRetry={retry}
         />
       )}

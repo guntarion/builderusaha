@@ -7,10 +7,33 @@ interface SkillsAnalysisSectionProps {
 
 export default function SkillsAnalysisSection({ skillsGap, onChange }: SkillsAnalysisSectionProps) {
   const handleChange = (field: keyof SkillsGap, value: string[] | Array<{ skill: string; gapLevel: 'Low' | 'Medium' | 'High' }>) => {
-    onChange({
+    const updatedSkillsGap = {
       ...skillsGap,
       [field]: value,
-    });
+    };
+
+    // If existing or required skills change, update gap analysis
+    if (field === 'existingSkills' || field === 'requiredSkills') {
+      const allSkills = Array.from(new Set([...updatedSkillsGap.existingSkills, ...updatedSkillsGap.requiredSkills]));
+      updatedSkillsGap.gapAnalysis = allSkills.map((skill) => {
+        const existingGap = updatedSkillsGap.gapAnalysis.find((g) => g.skill === skill);
+        return {
+          skill,
+          gapLevel: existingGap?.gapLevel || 'Medium',
+        };
+      });
+    }
+
+    onChange(updatedSkillsGap);
+  };
+
+  const handleInitializeGaps = () => {
+    const allSkills = Array.from(new Set([...skillsGap.existingSkills, ...skillsGap.requiredSkills]));
+    const updatedGapAnalysis = allSkills.map((skill) => ({
+      skill,
+      gapLevel: 'Medium' as 'Low' | 'Medium' | 'High',
+    }));
+    handleChange('gapAnalysis', updatedGapAnalysis);
   };
 
   return (
