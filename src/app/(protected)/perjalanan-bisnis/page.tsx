@@ -69,6 +69,206 @@ export default async function BusinessJourneyPage() {
           </div>
         ))}
       </div>
+
+      <h2 className='text-3xl font-bold mt-16 mb-8'>Alat Produktivitas Bisnis</h2>
+
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+        {[
+          {
+            category: 'Ideation & Problem Solving',
+            tools: [
+              {
+                name: 'Design Thinking Assistant',
+                emoji: '🧠',
+                description: 'Guide through design thinking process',
+                link: '/perjalanan-bisnis/power-tools/design-thinking-assistant',
+                isAvailable: true,
+              },
+              {
+                name: 'Brainstorming Facilitator',
+                emoji: '💡',
+                description: 'Enhance creative thinking',
+                link: '/perjalanan-bisnis/power-tools/brainstorming-facilitator',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Planning & Strategy',
+            tools: [
+              {
+                name: 'SMART Goals Generator',
+                emoji: '🎯',
+                description: 'Create effective goals',
+                link: '/perjalanan-bisnis/power-tools/smart-goals-generator',
+                isAvailable: true,
+              },
+              {
+                name: 'Strategic Planning Assistant',
+                emoji: '📊',
+                description: 'Business strategy development',
+                link: '/perjalanan-bisnis/power-tools/strategic-planning-assistant',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Decision Making',
+            tools: [
+              {
+                name: 'Decision Matrix Builder',
+                emoji: '📋',
+                description: 'Structured decision making',
+                link: '/perjalanan-bisnis/power-tools/decision-matrix-builder',
+                isAvailable: false,
+              },
+              {
+                name: 'Pro-Con Analysis Tool',
+                emoji: '⚖️',
+                description: 'Balanced decision evaluation',
+                link: '/perjalanan-bisnis/power-tools/pro-con-analysis-tool',
+                isAvailable: true,
+              },
+            ],
+          },
+          {
+            category: 'Productivity & Execution',
+            tools: [
+              {
+                name: 'Eisenhower Matrix Assistant',
+                emoji: '⏳',
+                description: 'Task prioritization',
+                link: '/perjalanan-bisnis/power-tools/eisenhower-matrix-assistant',
+                isAvailable: false,
+              },
+              {
+                name: 'OKR Developer',
+                emoji: '📌',
+                description: 'Goal alignment',
+                link: '/perjalanan-bisnis/power-tools/okr-developer',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Innovation & Product Development',
+            tools: [
+              {
+                name: 'Value Proposition Designer',
+                emoji: '💎',
+                description: 'Product-market fit',
+                link: '/perjalanan-bisnis/power-tools/value-proposition-designer',
+                isAvailable: false,
+              },
+              {
+                name: 'Business Model Canvas Generator',
+                emoji: '🖼️',
+                description: 'Business model innovation',
+                link: '/perjalanan-bisnis/power-tools/business-model-canvas-generator',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Problem Solving',
+            tools: [
+              {
+                name: 'Root Cause Analyzer',
+                emoji: '🔍',
+                description: 'Problem diagnosis',
+                link: '/perjalanan-bisnis/power-tools/root-cause-analyzer',
+                isAvailable: true,
+              },
+              {
+                name: 'SCAMPER Method Assistant',
+                emoji: '🛠️',
+                description: 'Product/service improvement',
+                link: '/perjalanan-bisnis/power-tools/scamper-method-assistant',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Team & Leadership',
+            tools: [
+              {
+                name: 'Meeting Facilitator',
+                emoji: '🤝',
+                description: 'Effective meetings',
+                link: '/perjalanan-bisnis/power-tools/meeting-facilitator',
+                isAvailable: false,
+              },
+              {
+                name: 'Feedback Framework',
+                emoji: '📝',
+                description: 'Team development',
+                link: '/perjalanan-bisnis/power-tools/feedback-framework',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Market Research',
+            tools: [
+              {
+                name: 'Customer Insight Generator',
+                emoji: '📈',
+                description: 'Market understanding',
+                link: '/perjalanan-bisnis/power-tools/customer-insight-generator',
+                isAvailable: false,
+              },
+            ],
+          },
+          {
+            category: 'Risk Management',
+            tools: [
+              {
+                name: 'Risk Assessment Matrix',
+                emoji: '⚠️',
+                description: 'Risk evaluation',
+                link: '/perjalanan-bisnis/power-tools/risk-assessment-matrix',
+                isAvailable: false,
+              },
+            ],
+          },
+        ].map((category, catIndex) => (
+          <div key={catIndex}>
+            <h3 className='text-xl font-semibold mb-4'>{category.category}</h3>
+            <div className='space-y-4'>
+              {category.tools.map((tool, toolIndex) => (
+                <div key={toolIndex} className='relative'>
+                  {tool.isAvailable ? (
+                    <Link href={tool.link}>
+                      <div className='bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all cursor-pointer'>
+                        <div className='flex items-center gap-3'>
+                          <div className='text-2xl'>{tool.emoji}</div>
+                          <div>
+                            <h4 className='font-medium'>{tool.name}</h4>
+                            <p className='text-sm text-gray-600'>{tool.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className='bg-yellow-50 p-4 rounded-lg shadow-sm relative border border-yellow-100'>
+                      <div className='absolute -top-2 -right-2 bg-yellow-100 px-3 py-1 rounded-full text-yellow-800 text-xs font-medium shadow-sm'>
+                        Segera Hadir
+                      </div>
+                      <div className='flex items-center gap-3'>
+                        <div className='text-2xl'>{tool.emoji}</div>
+                        <div>
+                          <h4 className='font-medium'>{tool.name}</h4>
+                          <p className='text-sm text-gray-600'>{tool.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

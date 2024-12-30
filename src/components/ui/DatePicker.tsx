@@ -1,43 +1,32 @@
 // src/components/ui/DatePicker.tsx
-import * as React from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from './popover';
-import { Calendar } from './calendar';
-import { Button } from './Button';
-import { CalendarIcon } from 'lucide-react';
-import { format } from 'date-fns';
 
-interface DatePickerProps {
-  mode?: 'single' | 'range';
-  onSelect?: (date: Date | { from: Date; to: Date } | undefined) => void;
+'use client';
+
+import * as React from 'react';
+import { format } from 'date-fns';
+import { Calendar as CalendarIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/Button';
+import { Calendar } from '@/components/ui/Calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/Popover';
+
+export interface DatePickerProps {
+  value?: Date;
+  onChange: (date: Date | undefined) => void;
+  className?: string;
 }
 
-export function DatePicker({ mode = 'single', onSelect }: DatePickerProps) {
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
-  const [range, setRange] = React.useState<{ from: Date; to: Date } | undefined>(undefined);
-
+export function DatePicker({ value, onChange, className }: DatePickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' className='w-[280px] justify-start text-left font-normal'>
+        <Button variant='outline' className={cn('w-full justify-start text-left font-normal', !value && 'text-muted-foreground', className)}>
           <CalendarIcon className='mr-2 h-4 w-4' />
-          {date ? format(date, 'PPP') : range ? `${format(range.from, 'PPP')} - ${format(range.to, 'PPP')}` : 'Pick a date'}
+          {value ? format(value, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0'>
-        <Calendar
-          mode={mode}
-          selected={mode === 'single' ? date : range}
-          onSelect={(selected) => {
-            if (mode === 'single') {
-              setDate(selected as Date);
-              onSelect?.(selected as Date);
-            } else {
-              setRange(selected as { from: Date; to: Date });
-              onSelect?.(selected as { from: Date; to: Date });
-            }
-          }}
-          initialFocus
-        />
+      <PopoverContent className='w-auto p-0' align='start'>
+        <Calendar mode='single' selected={value} onSelect={onChange} initialFocus />
       </PopoverContent>
     </Popover>
   );
