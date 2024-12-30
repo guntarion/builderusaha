@@ -1,15 +1,7 @@
 import { mockBusinessData } from '../../data/mockData';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 export function GrowthDashboard() {
   const growthMetrics = mockBusinessData[0].growthMetrics;
-
-  const data = [
-    { name: 'Market Share', value: growthMetrics.marketShare },
-    { name: 'Employee Growth', value: growthMetrics.employeeGrowth },
-    { name: 'Product Development', value: growthMetrics.productDevelopment },
-    { name: 'Customer Satisfaction', value: growthMetrics.customerSatisfaction },
-  ];
 
   return (
     <div className='space-y-4'>
@@ -32,15 +24,8 @@ export function GrowthDashboard() {
         </div>
       </div>
 
-      <div className='mt-4'>
-        <LineChart width={500} height={300} data={data}>
-          <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='name' />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type='monotone' dataKey='value' stroke='#8884d8' />
-        </LineChart>
+      <div className='mt-4 h-64 flex items-center justify-center bg-white rounded-lg shadow p-4'>
+        <p className='text-gray-500'>Chart functionality is currently unavailable</p>
       </div>
     </div>
   );

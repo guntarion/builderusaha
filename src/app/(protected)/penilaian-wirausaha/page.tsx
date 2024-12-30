@@ -2,7 +2,7 @@
 import { auth } from '../../../lib/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-import { AssessmentImage } from '@/components/ui/AssessmentImage';
+import { AssessmentImage } from './ujian-hidup/components/ui/AssessmentImage';
 
 interface Assessment {
   id: string;

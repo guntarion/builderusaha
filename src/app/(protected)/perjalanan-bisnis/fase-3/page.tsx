@@ -1,6 +1,6 @@
 // src/app/(protected)/perjalanan-bisnis/fase-3/page.tsx
 
-import { auth } from '@/lib/auth';
+import { auth } from '../../../../lib/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 

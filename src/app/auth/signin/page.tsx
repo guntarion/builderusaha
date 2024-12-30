@@ -1,7 +1,7 @@
 // src/app/auth/signin/page.tsx
-import { auth } from '@/lib/auth';
+import { auth } from '../../../lib/auth';
 import { redirect } from 'next/navigation';
-import { SignInForm } from '@/components/auth/SignInForm';
+import { SignInForm } from '../../../components/auth/SignInForm';
 
 export default async function SignInPage() {
   const session = await auth();

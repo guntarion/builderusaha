@@ -1,5 +1,5 @@
 // src/app/(protected)/perjalanan-bisnis/page.tsx
-import { auth } from '@/lib/auth';
+import { auth } from '../../../lib/auth';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 
