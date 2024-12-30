@@ -16,6 +16,9 @@ export default function Sidebar() {
         <Link href='/coachsultant/business-monitor' className='block px-6 py-2 text-gray-700 hover:bg-gray-100'>
           Monitor Bisnis
         </Link>
+        <Link href='/coachsultant/client-business' className='block px-6 py-2 text-gray-700 hover:bg-gray-100'>
+          Bisnis Klien
+        </Link>
         <Link href='/coachsultant/coaching-tools' className='block px-6 py-2 text-gray-700 hover:bg-gray-100'>
           Alat Coaching
         </Link>

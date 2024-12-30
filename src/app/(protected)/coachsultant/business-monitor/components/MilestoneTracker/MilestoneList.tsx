@@ -2,7 +2,7 @@ import { mockBusinessData } from '../../data/mockData';
 import { BusinessMetrics } from '../../types';
 
 export function MilestoneList() {
-  const milestones = mockBusinessData[0].milestones;
+  const milestones: BusinessMetrics['milestones'] = mockBusinessData[0].milestones;
 
   return (
     <div className='space-y-4'>
