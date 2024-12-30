@@ -1,6 +1,6 @@
 // src/components/layout/marketing/Navbar.tsx
 import Link from 'next/link';
-import { Button } from 'components/ui/Button';
+import { Button } from 'src/components/ui/Button';
 
 export function Navbar() {
   return (

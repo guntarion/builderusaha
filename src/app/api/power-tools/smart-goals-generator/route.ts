@@ -42,6 +42,7 @@ Instructions:
 3. Generate specific metrics
 4. Create milestone breakdown
 5. Suggest tracking methods
+6. Provide response in Bahasa Indonesia
 
 Please provide:
 1. Specific: Clear, detailed objective

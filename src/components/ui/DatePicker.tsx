@@ -20,12 +20,12 @@ export function DatePicker({ value, onChange, className }: DatePickerProps) {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant='outline' className={cn('w-full justify-start text-left font-normal', !value && 'text-muted-foreground', className)}>
+        <Button variant='outline' className={cn('w-full justify-start text-left font-normal', !value && 'text-gray-500', className)}>
           <CalendarIcon className='mr-2 h-4 w-4' />
           {value ? format(value, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className='w-auto p-0' align='start'>
+      <PopoverContent className='w-[280px] p-0' align='start'>
         <Calendar mode='single' selected={value} onSelect={onChange} initialFocus />
       </PopoverContent>
     </Popover>

@@ -3,46 +3,47 @@
 'use client';
 
 import { useState } from 'react';
+import LoadingSpinner from './LoadingSpinner';
 import { DatePicker } from '@/components/ui/DatePicker';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
 import { useSmartGoals } from '../hooks/useSmartGoals';
 import type { GoalCategory, Industry, Resource, SmartGoalFormData } from '../types';
 
 const goalCategories: GoalCategory[] = [
-  'Business Growth',
-  'Financial',
-  'Operations',
-  'Marketing',
-  'Team Development',
-  'Personal Development',
-  'Customer Service',
-  'Product Development',
+  'Pertumbuhan Bisnis',
+  'Keuangan',
+  'Operasional',
+  'Pemasaran',
+  'Pengembangan Tim',
+  'Pengembangan Diri',
+  'Layanan Pelanggan',
+  'Pengembangan Produk',
 ];
 
 const industries: Industry[] = [
-  'Technology',
-  'Retail',
-  'Manufacturing',
-  'Healthcare',
-  'Financial Services',
-  'Education',
-  'Real Estate',
-  'Construction',
-  'Transportation',
-  'Entertainment',
-  'Food & Beverage',
-  'Agriculture',
-  'Energy',
-  'Tourism',
-  'Professional Services',
+  'Teknologi',
+  'Ritel',
+  'Manufaktur',
+  'Kesehatan',
+  'Jasa Keuangan',
+  'Pendidikan',
+  'Properti',
+  'Konstruksi',
+  'Transportasi',
+  'Hiburan',
+  'Makanan & Minuman',
+  'Pertanian',
+  'Energi',
+  'Pariwisata',
+  'Jasa Profesional',
 ];
 
-const resources: Resource[] = ['Budget', 'Team size', 'Tools', 'Time commitment'];
+const resources: Resource[] = ['Anggaran', 'Ukuran Tim', 'Alat', 'Komitmen Waktu'];
 
 export function SmartGoalsForm() {
   const [formData, setFormData] = useState<SmartGoalFormData>({
     goalStatement: '',
-    category: 'Business Growth',
+    category: 'Pertumbuhan Bisnis',
     timeline: {
       startDate: new Date(),
       endDate: new Date(),
@@ -57,7 +58,18 @@ export function SmartGoalsForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await generateSmartGoal(formData);
+    try {
+      const response = await generateSmartGoal(formData);
+      console.log('API Response:', response);
+    } catch (error) {
+      console.error('API Error:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', {
+          message: error.message,
+          stack: error.stack,
+        });
+      }
+    }
   };
 
   return (
@@ -66,7 +78,7 @@ export function SmartGoalsForm() {
         {/* Goal Statement */}
         <div className='space-y-2'>
           <label htmlFor='goalStatement' className='block text-sm font-medium text-gray-700'>
-            Goal Statement
+            Pernyataan Tujuan
           </label>
           <input
             type='text'
@@ -76,16 +88,16 @@ export function SmartGoalsForm() {
             value={formData.goalStatement}
             onChange={(e) => setFormData({ ...formData, goalStatement: e.target.value })}
             className='w-full p-2 border rounded-md'
-            placeholder='e.g., Increase sales'
+            placeholder='Contoh: Meningkatkan penjualan'
           />
         </div>
 
         {/* Category */}
         <div className='space-y-2'>
-          <label className='block text-sm font-medium text-gray-700'>Goal Category</label>
+          <label className='block text-sm font-medium text-gray-700'>Kategori Tujuan</label>
           <Select value={formData.category} onValueChange={(value: GoalCategory) => setFormData({ ...formData, category: value })}>
             <SelectTrigger>
-              <SelectValue placeholder='Select a category' />
+              <SelectValue placeholder='Pilih kategori' />
             </SelectTrigger>
             <SelectContent>
               {goalCategories.map((category) => (
@@ -100,25 +112,25 @@ export function SmartGoalsForm() {
         {/* Timeline */}
         <div className='grid grid-cols-2 gap-4'>
           <div className='space-y-2'>
-            <label className='block text-sm font-medium text-gray-700'>Start Date</label>
+            <label className='block text-sm font-medium text-gray-700'>Tanggal Mulai</label>
             <DatePicker
-              date={formData.timeline.startDate}
+              value={formData.timeline.startDate}
               onChange={(date) =>
                 setFormData({
                   ...formData,
-                  timeline: { ...formData.timeline, startDate: date },
+                  timeline: { ...formData.timeline, startDate: date || new Date() },
                 })
               }
             />
           </div>
           <div className='space-y-2'>
-            <label className='block text-sm font-medium text-gray-700'>End Date</label>
+            <label className='block text-sm font-medium text-gray-700'>Tanggal Selesai</label>
             <DatePicker
-              date={formData.timeline.endDate}
+              value={formData.timeline.endDate}
               onChange={(date) =>
                 setFormData({
                   ...formData,
-                  timeline: { ...formData.timeline, endDate: date },
+                  timeline: { ...formData.timeline, endDate: date || new Date() },
                 })
               }
             />
@@ -127,10 +139,10 @@ export function SmartGoalsForm() {
 
         {/* Industry */}
         <div className='space-y-2'>
-          <label className='block text-sm font-medium text-gray-700'>Industry (Optional)</label>
+          <label className='block text-sm font-medium text-gray-700'>Industri (Opsional)</label>
           <Select value={formData.industry} onValueChange={(value: Industry) => setFormData({ ...formData, industry: value })}>
             <SelectTrigger>
-              <SelectValue placeholder='Select an industry' />
+              <SelectValue placeholder='Pilih industri' />
             </SelectTrigger>
             <SelectContent>
               {industries.map((industry) => (
@@ -145,7 +157,7 @@ export function SmartGoalsForm() {
         {/* Current Metrics */}
         <div className='space-y-2'>
           <label htmlFor='currentMetrics' className='block text-sm font-medium text-gray-700'>
-            Current Metrics (Optional)
+            Metrik Saat Ini (Opsional)
           </label>
           <input
             type='text'
@@ -153,13 +165,13 @@ export function SmartGoalsForm() {
             value={formData.currentMetrics || ''}
             onChange={(e) => setFormData({ ...formData, currentMetrics: e.target.value })}
             className='w-full p-2 border rounded-md'
-            placeholder='e.g., $100,000 monthly recurring revenue'
+            placeholder='Contoh: Rp 1.000.000.000 pendapatan bulanan berulang'
           />
         </div>
 
         {/* Resources */}
         <div className='space-y-2'>
-          <label className='block text-sm font-medium text-gray-700'>Resources Available (Optional)</label>
+          <label className='block text-sm font-medium text-gray-700'>Sumber Daya Tersedia (Opsional)</label>
           <div className='grid grid-cols-2 gap-2'>
             {resources.map((resource) => (
               <label key={resource} className='flex items-center space-x-2 text-sm'>
@@ -183,14 +195,14 @@ export function SmartGoalsForm() {
         {/* Constraints */}
         <div className='space-y-2'>
           <label htmlFor='constraints' className='block text-sm font-medium text-gray-700'>
-            Constraints (Optional)
+            Kendala (Opsional)
           </label>
           <textarea
             id='constraints'
             value={formData.constraints || ''}
             onChange={(e) => setFormData({ ...formData, constraints: e.target.value })}
             className='w-full p-2 border rounded-md'
-            placeholder='e.g., Limited market presence in Europe'
+            placeholder='Contoh: Kehadiran pasar terbatas di Eropa'
             rows={3}
           />
         </div>
@@ -200,7 +212,14 @@ export function SmartGoalsForm() {
           disabled={isLoading}
           className='w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50'
         >
-          {isLoading ? 'Generating...' : 'Generate SMART Goal'}
+          {isLoading ? (
+            <div className='flex items-center justify-center gap-2'>
+              <LoadingSpinner size='sm' />
+              <span>Membuat...</span>
+            </div>
+          ) : (
+            'Buat SMART Goal'
+          )}
         </button>
       </form>
 
@@ -208,11 +227,11 @@ export function SmartGoalsForm() {
 
       {data && (
         <div className='mt-8 p-6 bg-white rounded-lg shadow'>
-          <h2 className='text-2xl font-bold mb-4'>Generated SMART Goal</h2>
+          <h2 className='text-2xl font-bold mb-4'>SMART Goal yang Dihasilkan</h2>
 
           <div className='space-y-6'>
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Specific</h3>
+              <h3 className='text-lg font-semibold mb-2'>Spesifik</h3>
               <p className='text-gray-700'>{data.smart_goal.specific.refined_statement}</p>
               <ul className='mt-2 list-disc list-inside'>
                 {data.smart_goal.specific.clarifying_details.map((detail, i) => (
@@ -224,10 +243,10 @@ export function SmartGoalsForm() {
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Measurable</h3>
+              <h3 className='text-lg font-semibold mb-2'>Terukur</h3>
               <div className='space-y-2'>
                 <div>
-                  <p className='font-medium'>Primary Metrics:</p>
+                  <p className='font-medium'>Metrik Utama:</p>
                   <ul className='list-disc list-inside'>
                     {data.smart_goal.measurable.primary_metrics.map((metric, i) => (
                       <li key={i} className='text-gray-600'>
@@ -237,7 +256,7 @@ export function SmartGoalsForm() {
                   </ul>
                 </div>
                 <div>
-                  <p className='font-medium'>Secondary Metrics:</p>
+                  <p className='font-medium'>Metrik Sekunder:</p>
                   <ul className='list-disc list-inside'>
                     {data.smart_goal.measurable.secondary_metrics.map((metric, i) => (
                       <li key={i} className='text-gray-600'>
@@ -250,10 +269,10 @@ export function SmartGoalsForm() {
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Achievable</h3>
+              <h3 className='text-lg font-semibold mb-2'>Dapat Dicapai</h3>
               <div className='space-y-2'>
                 <div>
-                  <p className='font-medium'>Target Breakdown:</p>
+                  <p className='font-medium'>Rincian Target:</p>
                   <ul className='list-disc list-inside'>
                     {data.smart_goal.achievable.target_breakdown.map((target, i) => (
                       <li key={i} className='text-gray-600'>
@@ -263,7 +282,7 @@ export function SmartGoalsForm() {
                   </ul>
                 </div>
                 <div>
-                  <p className='font-medium'>Required Resources:</p>
+                  <p className='font-medium'>Sumber Daya yang Dibutuhkan:</p>
                   <ul className='list-disc list-inside'>
                     {data.smart_goal.achievable.required_resources.map((resource, i) => (
                       <li key={i} className='text-gray-600'>
@@ -276,10 +295,10 @@ export function SmartGoalsForm() {
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Relevant</h3>
+              <h3 className='text-lg font-semibold mb-2'>Relevan</h3>
               <p className='text-gray-700'>{data.smart_goal.relevant.business_impact}</p>
               <div className='mt-2'>
-                <p className='font-medium'>Stakeholder Benefits:</p>
+                <p className='font-medium'>Manfaat Stakeholder:</p>
                 <ul className='list-disc list-inside'>
                   {data.smart_goal.relevant.stakeholder_benefits.map((benefit, i) => (
                     <li key={i} className='text-gray-600'>
@@ -291,10 +310,10 @@ export function SmartGoalsForm() {
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Time-bound</h3>
-              <p className='font-medium'>Final Deadline: {data.smart_goal.time_bound.final_deadline}</p>
+              <h3 className='text-lg font-semibold mb-2'>Terikat Waktu</h3>
+              <p className='font-medium'>Batas Waktu Akhir: {data.smart_goal.time_bound.final_deadline}</p>
               <div className='mt-2'>
-                <p className='font-medium'>Milestones:</p>
+                <p className='font-medium'>Tonggak Pencapaian:</p>
                 <ul className='space-y-2'>
                   {data.smart_goal.time_bound.milestones.map((milestone, i) => (
                     <li key={i} className='text-gray-600'>
@@ -306,10 +325,10 @@ export function SmartGoalsForm() {
             </div>
 
             <div>
-              <h3 className='text-lg font-semibold mb-2'>Tracking Plan</h3>
-              <p className='font-medium'>Frequency: {data.smart_goal.tracking_plan.frequency}</p>
+              <h3 className='text-lg font-semibold mb-2'>Rencana Pelacakan</h3>
+              <p className='font-medium'>Frekuensi: {data.smart_goal.tracking_plan.frequency}</p>
               <div className='mt-2'>
-                <p className='font-medium'>Methods:</p>
+                <p className='font-medium'>Metode:</p>
                 <ul className='list-disc list-inside'>
                   {data.smart_goal.tracking_plan.methods.map((method, i) => (
                     <li key={i} className='text-gray-600'>

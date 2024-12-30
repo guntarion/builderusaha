@@ -1,33 +1,33 @@
 // src/app/(protected)/perjalanan-bisnis/power-tools/smart-goals-generator/types/index.ts
 
 export type GoalCategory =
-  | 'Business Growth'
-  | 'Financial'
-  | 'Operations'
-  | 'Marketing'
-  | 'Team Development'
-  | 'Personal Development'
-  | 'Customer Service'
-  | 'Product Development';
+  | 'Pertumbuhan Bisnis'
+  | 'Keuangan'
+  | 'Operasional'
+  | 'Pemasaran'
+  | 'Pengembangan Tim'
+  | 'Pengembangan Diri'
+  | 'Layanan Pelanggan'
+  | 'Pengembangan Produk';
 
 export type Industry =
-  | 'Technology'
-  | 'Retail'
-  | 'Manufacturing'
-  | 'Healthcare'
-  | 'Financial Services'
-  | 'Education'
-  | 'Real Estate'
-  | 'Construction'
-  | 'Transportation'
-  | 'Entertainment'
-  | 'Food & Beverage'
-  | 'Agriculture'
-  | 'Energy'
-  | 'Tourism'
-  | 'Professional Services';
+  | 'Teknologi'
+  | 'Ritel'
+  | 'Manufaktur'
+  | 'Kesehatan'
+  | 'Jasa Keuangan'
+  | 'Pendidikan'
+  | 'Properti'
+  | 'Konstruksi'
+  | 'Transportasi'
+  | 'Hiburan'
+  | 'Makanan & Minuman'
+  | 'Pertanian'
+  | 'Energi'
+  | 'Pariwisata'
+  | 'Jasa Profesional';
 
-export type Resource = 'Budget' | 'Team size' | 'Tools' | 'Time commitment';
+export type Resource = 'Anggaran' | 'Ukuran Tim' | 'Alat' | 'Komitmen Waktu';
 
 export interface SmartGoalFormData {
   goalStatement: string;

@@ -1,7 +1,7 @@
 // src/app/(marketing)/page.tsx
 import Link from 'next/link';
-import { Button } from 'components/ui/Button';
-import { Navbar } from 'components/layout/marketing/Navbar';
+import { Button } from 'src/components/ui/Button';
+import { Navbar } from 'src/components/layout/marketing/Navbar';
 
 export default function HomePage() {
   return (
