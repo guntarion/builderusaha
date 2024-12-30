@@ -1,3 +1,4 @@
+// src/app/(protected)/perjalanan-bisnis/fase-3/team-hiring/components/ResultsDisplay.tsx
 'use client';
 
 import { useState } from 'react';
@@ -81,32 +82,32 @@ export function ResultsDisplay() {
     </div>
   );
 
-  const renderTimeline = () => (
-    <div className='space-y-4'>
-      {(formData as any)?.timeline?.map((item: TimelineItem, index: number) => (
-        <div key={index} className='flex items-center space-x-4'>
-          <div className='w-4 h-4 bg-blue-600 rounded-full'></div>
-          <div>
-            <p className='font-medium'>{item.title}</p>
-            <p className='text-sm text-gray-600'>{item.description}</p>
-            <p className='text-sm text-gray-500'>{item.date}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+  // const renderTimeline = () => (
+  //   <div className='space-y-4'>
+  //     {(formData as any)?.timeline?.map((item: TimelineItem, index: number) => (
+  //       <div key={index} className='flex items-center space-x-4'>
+  //         <div className='w-4 h-4 bg-blue-600 rounded-full'></div>
+  //         <div>
+  //           <p className='font-medium'>{item.title}</p>
+  //           <p className='text-sm text-gray-600'>{item.description}</p>
+  //           <p className='text-sm text-gray-500'>{item.date}</p>
+  //         </div>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 
-  const renderBudget = () => (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-      {(formData as any)?.budget?.map((item: BudgetItem, index: number) => (
-        <div key={index} className='p-3 bg-white rounded-lg shadow-sm'>
-          <p className='font-medium'>{item.category}</p>
-          <p className='text-sm text-gray-600'>{item.description}</p>
-          <p className='text-blue-600 font-semibold'>{item.amount}</p>
-        </div>
-      ))}
-    </div>
-  );
+  // const renderBudget = () => (
+  //   <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+  //     {(formData as any)?.budget?.map((item: BudgetItem, index: number) => (
+  //       <div key={index} className='p-3 bg-white rounded-lg shadow-sm'>
+  //         <p className='font-medium'>{item.category}</p>
+  //         <p className='text-sm text-gray-600'>{item.description}</p>
+  //         <p className='text-blue-600 font-semibold'>{item.amount}</p>
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 
   return (
     <div className='space-y-6'>
@@ -120,7 +121,7 @@ export function ResultsDisplay() {
         {renderSection('Analisis Bisnis', 'enhancedContext', enhancedContext)}
         {renderSection('Rencana Perekrutan', 'hiringPlan', hiringPlan)}
 
-        <div className='bg-gray-50 p-4 rounded-lg'>
+        {/* <div className='bg-gray-50 p-4 rounded-lg'>
           <div className='flex justify-between items-center cursor-pointer' onClick={() => toggleSection('timeline')}>
             <h3 className='text-lg font-semibold'>Timeline Perekrutan</h3>
             <span>{expandedSections.timeline ? '▲' : '▼'}</span>
@@ -134,7 +135,7 @@ export function ResultsDisplay() {
             <span>{expandedSections.budget ? '▲' : '▼'}</span>
           </div>
           {expandedSections.budget && <div className='mt-4'>{renderBudget()}</div>}
-        </div>
+        </div> */}
       </div>
 
       <div className='flex gap-4 mt-6'>

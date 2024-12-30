@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  type?: 'button' | 'submit' | 'reset';
-  className?: string;
-  onClick?: () => void;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export function Button({ children, type = 'button', className = '', onClick }: ButtonProps) {

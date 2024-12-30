@@ -16,6 +16,24 @@ interface Tool {
 
 const tools: Tool[] = [
   {
+    id: 'team-hiring',
+    name: 'Team Hiring Planner',
+    description: 'Rancang strategi perekrutan yang efektif dengan bantuan AI',
+    icon: '🎯',
+    link: '/perjalanan-bisnis/fase-3/team-hiring',
+    isAvailable: true,
+    features: ['Analisis kebutuhan tim', 'Prioritas perekrutan', 'Deskripsi pekerjaan AI', 'Rencana implementasi', 'Strategi rekrutmen'],
+  },
+  {
+    id: 'team-scaling',
+    name: 'Team Scaling Assistant',
+    description: 'Panduan AI untuk mengembangkan dan mengelola tim secara efektif',
+    icon: '👥',
+    link: '/perjalanan-bisnis/fase-3/team-scaling',
+    isAvailable: true,
+    features: ['Role definition generator', 'Hiring timeline planner', 'Team structure optimizer', 'Skills gap analyzer', 'Training needs assessor'],
+  },
+  {
     id: 'growth-wheel',
     name: 'Growth Wheel Implementation',
     description: 'Diagnosa dan optimalkan pertumbuhan bisnis Anda dengan pendekatan terstruktur',
@@ -29,15 +47,6 @@ const tools: Tool[] = [
       'Progress monitoring dashboard',
       'Performance metrics tracker',
     ],
-  },
-  {
-    id: 'team-scaling',
-    name: 'Team Scaling Assistant',
-    description: 'Panduan AI untuk mengembangkan dan mengelola tim secara efektif',
-    icon: '👥',
-    link: '/perjalanan-bisnis/fase-3/team-scaling',
-    isAvailable: true,
-    features: ['Role definition generator', 'Hiring timeline planner', 'Team structure optimizer', 'Skills gap analyzer', 'Training needs assessor'],
   },
 ];
 

@@ -23,6 +23,9 @@ export function Navbar() {
             <Link href='#testimonial' className='text-gray-600 hover:text-gray-900'>
               Testimonial
             </Link>
+            <Link href='#testimonial' className='text-gray-600 hover:text-gray-900'>
+              CoachSultant
+            </Link>
             <Button variant='primary'>Mulai Sekarang</Button>
           </div>
         </div>

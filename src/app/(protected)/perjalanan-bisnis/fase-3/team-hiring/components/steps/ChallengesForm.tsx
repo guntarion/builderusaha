@@ -1,7 +1,7 @@
 'use client';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button } from '../ui/Button';
+import { Button } from '../../components/ui/Button';
 import { useFormContext } from '../../context/FormContext';
 
 interface ChallengesFormProps {
@@ -21,7 +21,14 @@ export function ChallengesForm({ onNext, onBack }: ChallengesFormProps) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ChallengesFormData>();
+  } = useForm<ChallengesFormData>({
+    defaultValues: {
+      challenges: ['Beban kerja tinggi', 'Keahlian yang kurang', 'Keterbatasan teknis'],
+      otherChallenge: 'Kesulitan dalam koordinasi tim remote',
+      goals: ['Memperluas jangkauan pasar', 'Meningkatkan kualitas layanan'],
+      otherGoal: 'Mengoptimalkan proses internal',
+    },
+  });
 
   const { setFormData } = useFormContext();
 

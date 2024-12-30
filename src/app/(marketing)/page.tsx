@@ -22,10 +22,8 @@ export default function HomePage() {
               perjalanan bisnis Anda.
             </p>
             <div className='flex justify-center gap-4'>
-              <Button size='lg'>Mulai Perjalanan Bisnis</Button>
-              <Button variant='outline' size='lg'>
-                Pelajari Lebih Lanjut
-              </Button>
+              <Button>Mulai Perjalanan Bisnis</Button>
+              <Button>Pelajari Lebih Lanjut</Button>
             </div>
           </div>
         </div>

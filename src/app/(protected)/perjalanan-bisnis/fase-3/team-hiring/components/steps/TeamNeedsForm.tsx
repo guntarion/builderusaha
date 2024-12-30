@@ -1,8 +1,11 @@
+// src/app/(protected)/perjalanan-bisnis/fase-3/team-hiring/components/steps/TeamNeedsForm.tsx
 'use client';
 
+import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Button } from '../ui/Button';
 import { useFormContext } from '../../context/FormContext';
+import LoadingSpinner from '../LoadingSpinner';
 
 interface TeamNeedsFormProps {
   onBack: () => void;
@@ -24,21 +27,39 @@ interface TeamNeedsFormProps {
   onSubmit: () => void;
 }
 
-export function TeamNeedsForm({ onBack, onSubmit }: TeamNeedsFormProps) {
+export function TeamNeedsForm({ onBack, onSubmit: handleFormSubmit }: TeamNeedsFormProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TeamNeedsFormData>();
+  } = useForm<TeamNeedsFormData>({
+    defaultValues: {
+      currentSkills: ['Manajemen Proyek', 'Pengembangan Produk', 'Customer Service'],
+      missingSkills: 'Kami membutuhkan keahlian dalam analisis data dan machine learning untuk meningkatkan kemampuan prediktif produk kami.',
+      bottlenecks: 'Proses rekrutmen yang lambat dan kurangnya kandidat berkualitas di bidang teknologi menjadi hambatan utama kami.',
+      hiringBudget: '100 - 500 juta',
+      shortTermGoals: 'Merekrut 2 data scientist dan 1 product manager dalam 3 bulan ke depan.',
+      mediumTermGoals: 'Membangtim tim R&D yang solid dan meluncurkan fitur AI pertama kami dalam 6 bulan.',
+      longTermGoals: 'Menjadi pemimpin pasar dalam solusi berbasis AI di industri kami dalam 12 bulan.',
+      successMetrics:
+        'Meningkatkan retensi pelanggan sebesar 20%, mengurangi waktu pengembangan produk sebesar 30%, dan mencapai 1 juta pengguna aktif bulanan.',
+    },
+  });
 
   const { setFormData } = useFormContext();
 
-  const onSubmit: SubmitHandler<TeamNeedsFormData> = (data) => {
-    setFormData((prev) => ({
-      ...prev,
-      teamNeeds: data,
-    }));
-    // Handle form submission
+  const onSubmit: SubmitHandler<TeamNeedsFormData> = async (data) => {
+    setIsSubmitting(true);
+    try {
+      setFormData((prev) => ({
+        ...prev,
+        teamNeeds: data,
+      }));
+      await handleFormSubmit();
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -107,7 +128,13 @@ export function TeamNeedsForm({ onBack, onSubmit }: TeamNeedsFormProps) {
         <Button type='button' onClick={onBack}>
           Kembali
         </Button>
-        <Button type='submit'>Selesai</Button>
+        {isSubmitting ? (
+          <LoadingSpinner />
+        ) : (
+          <Button type='submit' disabled={isSubmitting}>
+            Selesai
+          </Button>
+        )}
       </div>
     </form>
   );
