@@ -56,5 +56,35 @@ export const mockBusinessData: BusinessMetrics[] = [
       productDevelopment: 80,
       customerSatisfaction: 85,
     },
+    historicalGrowth: [
+      {
+        quarter: 'Q1 2023',
+        marketShare: 8.5,
+        employeeGrowth: 15,
+        productDevelopment: 60,
+        customerSatisfaction: 75,
+      },
+      {
+        quarter: 'Q2 2023',
+        marketShare: 9.8,
+        employeeGrowth: 18,
+        productDevelopment: 65,
+        customerSatisfaction: 78,
+      },
+      {
+        quarter: 'Q3 2023',
+        marketShare: 11.2,
+        employeeGrowth: 22,
+        productDevelopment: 72,
+        customerSatisfaction: 82,
+      },
+      {
+        quarter: 'Q4 2023',
+        marketShare: 12.5,
+        employeeGrowth: 25,
+        productDevelopment: 80,
+        customerSatisfaction: 85,
+      },
+    ],
   },
 ];

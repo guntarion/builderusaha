@@ -1,3 +1,11 @@
+export interface HistoricalGrowthPoint {
+  quarter: string;
+  marketShare: number;
+  employeeGrowth: number;
+  productDevelopment: number;
+  customerSatisfaction: number;
+}
+
 export interface BusinessMetrics {
   id: string;
   clientId: string;
@@ -42,4 +50,5 @@ export interface BusinessMetrics {
     productDevelopment: number;
     customerSatisfaction: number;
   };
+  historicalGrowth: HistoricalGrowthPoint[];
 }
