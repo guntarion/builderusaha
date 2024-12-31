@@ -2,27 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Custom styles for marketing page */
+.banner-section {
+  @apply relative pt-32 pb-16 bg-gradient-to-br from-blue-500 to-blue-600 text-white overflow-hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.banner-content {
+  @apply relative z-10;
+}
+
+.banner-img {
+  @apply relative;
+}
+
+.banner-img img {
+  @apply w-full h-auto;
+}
+
+.banner-floating-icon {
+  @apply absolute;
+  animation: float 3s ease-in-out infinite;
+}
+
+.banner-floating-icon:nth-child(1) {
+  @apply top-0 left-0;
+}
+
+.banner-floating-icon:nth-child(2) {
+  @apply top-1/4 right-0;
+}
+
+.banner-floating-icon:nth-child(3) {
+  @apply bottom-0 left-1/4;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+/* Why Choose Us section styles */
+.why-choose-us {
+  @apply py-20 bg-gray-50;
 }
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+.why-choose-item {
+  @apply flex items-start gap-6 p-6 bg-white rounded-xl shadow-sm transition-all hover:shadow-md mb-6;
+}
+
+.why-choose-item:nth-child(even) {
+  @apply bg-blue-50;
+}
+
+.why-choose-icon {
+  @apply w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 flex-shrink-0;
+}
+
+.why-choose-content h3 {
+  @apply text-xl font-semibold mb-2 text-gray-900;
+}
+
+.why-choose-content p {
+  @apply text-gray-600;
+}
+
+/* Footer styles */
+.footer {
+  @apply bg-gray-900 text-gray-300 pt-16 pb-8;
+}
+
+.footer-content {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8;
+}
+
+.footer-section h3 {
+  @apply text-white text-lg font-semibold mb-4;
+}
+
+.footer-links {
+  @apply space-y-2;
+}
+
+.footer-links a {
+  @apply hover:text-white transition-colors;
+}
+
+.footer-bottom {
+  @apply mt-12 pt-8 border-t border-gray-800 text-sm;
+}
+
+.footer-bottom-content {
+  @apply flex flex-col md:flex-row justify-between items-center gap-4;
+}
+
+.social-links {
+  @apply flex gap-4;
+}
+
+.social-links a {
+  @apply hover:text-white transition-colors;
 }
