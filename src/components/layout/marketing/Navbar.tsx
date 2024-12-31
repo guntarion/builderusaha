@@ -20,8 +20,8 @@ export function Navbar() {
             <Link href='#cara-kerja' className='text-gray-600 hover:text-gray-900'>
               Cara Kerja
             </Link>
-            <Link href='#testimonial' className='text-gray-600 hover:text-gray-900'>
-              Testimonial
+            <Link href='/template-usaha' className='text-gray-600 hover:text-gray-900'>
+              Template Usaha
             </Link>
             <Link href='/coachsultant' className='text-gray-600 hover:text-gray-900'>
               CoachSultant
