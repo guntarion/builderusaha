@@ -1,0 +1,2 @@
+When creating a new source code file, on the very top of the file (or in a location which are safe to be included - like below 'use client';), include -as a safe comment- the file name along with its extension and the relative path of the file.
+Document the changes you make in ./change.md

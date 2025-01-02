@@ -29,7 +29,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className='banner-img hidden md:block'>
-              <Image src='/images/hero-business.svg' alt='Business Growth' width={600} height={500} priority />
+              <Image src='/images/hero-bisnis.jpg' alt='Business Growth' width={600} height={500} priority />
               <div className='banner-floating-icon'>
                 <Image src='/images/icon-chart.svg' alt='Chart' width={60} height={60} />
               </div>
@@ -72,8 +72,8 @@ export default function HomePage() {
                     <Image src='/images/icon-assessment.svg' alt='Assessment' width={32} height={32} />
                   </div>
                   <div className='why-choose-content'>
-                    <h3>Penilaian Komprehensif</h3>
-                    <p>Analisis mendalam tentang potensi wirausaha dan kesehatan bisnis Anda menggunakan AI</p>
+                    <h3>Penilaian terhadap Pebisnis</h3>
+                    <p>Analisis tentang potensi wirausaha untuk membantu proses bertumbuh sebagai pebisnis</p>
                   </div>
                 </div>
               </Link>
@@ -84,8 +84,8 @@ export default function HomePage() {
                     <Image src='/images/icon-learning.svg' alt='Learning' width={32} height={32} />
                   </div>
                   <div className='why-choose-content'>
-                    <h3>Pembelajaran Adaptif</h3>
-                    <p>Materi pembelajaran yang disesuaikan dengan tahap dan kebutuhan bisnis Anda</p>
+                    <h3>Penilaian terhadap Usaha</h3>
+                    <p>Assessment terhadap usaha untuk membantu naik level usaha Anda</p>
                   </div>
                 </div>
               </Link>
@@ -96,15 +96,15 @@ export default function HomePage() {
                     <Image src='/images/icon-support.svg' alt='Support' width={32} height={32} />
                   </div>
                   <div className='why-choose-content'>
-                    <h3>Dukungan AI 24/7</h3>
-                    <p>Asisten AI yang siap membantu Anda kapanpun dalam perjalanan bisnis</p>
+                    <h3>Pembelajaran Adaptif</h3>
+                    <p>Materi pembelajaran yang disesuaikan dengan tahap dan kebutuhan bisnis Anda</p>
                   </div>
                 </div>
               </Link>
             </div>
 
             <div className='relative hidden md:block'>
-              <Image src='/images/business-growth.svg' alt='Business Growth' width={600} height={600} className='rounded-lg' />
+              <Image src='/images/business-growth.jpg' alt='Business Growth' width={600} height={600} className='rounded-lg' />
               <div className='absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg'>
                 <div className='flex items-center gap-4'>
                   <div className='text-blue-600 font-bold text-xl'>1000+</div>
@@ -213,7 +213,7 @@ export default function HomePage() {
 
           <div className='footer-bottom'>
             <div className='footer-bottom-content'>
-              <p>© 2024 BuilderUsaha. All rights reserved.</p>
+              <p>© 2025 BuilderUsaha. All rights reserved.</p>
               <div className='flex gap-4'>
                 <Link href='/kebijakan-privasi'>Kebijakan Privasi</Link>
                 <Link href='/syarat-ketentuan'>Syarat & Ketentuan</Link>

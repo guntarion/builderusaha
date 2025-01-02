@@ -29,7 +29,7 @@ const webinars: Webinar[] = [
     id: '1',
     title: 'Strategi Mengembangkan UMKM di Era Digital',
     speaker: {
-      name: 'Dr. Budi Santoso',
+      name: 'Dr. Cahyadi Santoso',
       role: 'Direktur Digital Transformation',
       organization: 'Kementerian UMKM',
       imageUrl: '/placeholder-speaker-1.jpg',

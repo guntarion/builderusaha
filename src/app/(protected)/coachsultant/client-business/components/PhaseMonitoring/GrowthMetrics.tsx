@@ -3,22 +3,22 @@ import MetricCard from '../Common/MetricCard';
 import ProgressBar from '../Common/ProgressBar';
 
 interface GrowthMetricsProps {
-  revenueGrowth: number;
-  customerGrowth: number;
-  marketShare: number;
-  avgMonthlyGrowth: string;
+  pertumbuhanPendapatan: number;
+  pertumbuhanPelanggan: number;
+  pangsaPasar: number;
+  rataPertumbuhanBulanan: string;
 }
 
-export function GrowthMetrics({ revenueGrowth, customerGrowth, marketShare, avgMonthlyGrowth }: GrowthMetricsProps) {
+export function GrowthMetrics({ pertumbuhanPendapatan, pertumbuhanPelanggan, pangsaPasar, rataPertumbuhanBulanan }: GrowthMetricsProps) {
   return (
     <div className='space-y-4'>
-      <h3 className='text-lg font-semibold'>Growth Metrics</h3>
+      <h3 className='text-lg font-semibold'>Metrik Pertumbuhan</h3>
       <div className='grid grid-cols-2 gap-4'>
-        <MetricCard title='Revenue Growth' value={`${revenueGrowth}%`} trend='↑ 15%' />
-        <MetricCard title='Customer Growth' value={`${customerGrowth}%`} trend='↑ 10%' />
+        <MetricCard title='Pertumbuhan Pendapatan' value={`${pertumbuhanPendapatan}%`} trend='↑ 15%' />
+        <MetricCard title='Pertumbuhan Pelanggan' value={`${pertumbuhanPelanggan}%`} trend='↑ 10%' />
       </div>
-      <ProgressBar value={marketShare} label='Market Share' />
-      <MetricCard title='Avg Monthly Growth' value={avgMonthlyGrowth} trend='→ 0%' />
+      <ProgressBar value={pangsaPasar} label='Pangsa Pasar' />
+      <MetricCard title='Rata Pertumbuhan Bulanan' value={rataPertumbuhanBulanan} trend='→ 0%' />
     </div>
   );
 }

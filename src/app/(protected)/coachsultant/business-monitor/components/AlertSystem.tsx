@@ -15,17 +15,17 @@ export function AlertSystem({ metrics }: AlertSystemProps) {
     // Check revenue target
     if (metrics.kpiMetrics.revenue.current < metrics.kpiMetrics.revenue.target) {
       const percentage = ((metrics.kpiMetrics.revenue.current / metrics.kpiMetrics.revenue.target) * 100).toFixed(1);
-      newAlerts.push(`Revenue is below target (${percentage}%)`);
+      newAlerts.push(`Pendapatan di bawah target (${percentage}%)`);
     }
 
     // Check customer churn rate
     if (metrics.kpiMetrics.customers.churnRate > 5) {
-      newAlerts.push(`High customer churn rate (${metrics.kpiMetrics.customers.churnRate}%)`);
+      newAlerts.push(`Tingkat churn pelanggan tinggi (${metrics.kpiMetrics.customers.churnRate}%)`);
     }
 
     // Check cash flow runway
     if (metrics.kpiMetrics.cashflow.runway < 3) {
-      newAlerts.push(`Low cash runway (${metrics.kpiMetrics.cashflow.runway} months)`);
+      newAlerts.push(`Cadangan kas rendah (${metrics.kpiMetrics.cashflow.runway} bulan)`);
     }
 
     setAlerts(newAlerts);
@@ -36,7 +36,7 @@ export function AlertSystem({ metrics }: AlertSystemProps) {
       <div className='p-4 bg-green-50 rounded-lg'>
         <div className='flex items-center gap-2 text-green-600'>
           <CheckCircle2 className='w-5 h-5' />
-          <span>All KPIs are within target ranges</span>
+          <span>Semua KPI berada dalam rentang target</span>
         </div>
       </div>
     );

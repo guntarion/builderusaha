@@ -53,10 +53,10 @@ export default function TemplateUsahaPage() {
                 category: 'Retail & Trading',
                 items: [
                   { title: 'Toko online', slug: 'toko-online' },
-                  { title: '💎 Reseller branded products', slug: 'reseller-branded-products' },
+                  { title: 'Reseller branded products', slug: 'reseller-branded-products' },
                   { title: 'Toko kelontong', slug: 'toko-kelontong' },
                   { title: 'Specialty store', slug: 'specialty-store' },
-                  { title: '🟩 Dropshipping', slug: 'dropshipping' },
+                  { title: 'Dropshipping', slug: 'dropshipping' },
                 ],
               },
               {
@@ -65,7 +65,7 @@ export default function TemplateUsahaPage() {
                   { title: 'Jasa kecantikan/salon', slug: 'jasa-kecantikan-salon' },
                   { title: 'Pet grooming', slug: 'pet-grooming' },
                   { title: 'Laundry', slug: 'laundry' },
-                  { title: '🟩 Cleaning service', slug: 'cleaning-service' },
+                  { title: 'Cleaning service', slug: 'cleaning-service' },
                   { title: 'Wedding organizer skala kecil', slug: 'wedding-organizer-skala-kecil' },
                   { title: 'Photography/videography', slug: 'photography-videography' },
                 ],

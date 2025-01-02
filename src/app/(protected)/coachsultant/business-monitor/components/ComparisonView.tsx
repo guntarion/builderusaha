@@ -9,16 +9,16 @@ export function ComparisonView({ currentMetrics, previousMetrics }: ComparisonVi
   return (
     <div className='space-y-8'>
       <div className='bg-white p-6 rounded-lg shadow'>
-        <h3 className='text-lg font-semibold mb-4'>Revenue Comparison</h3>
+        <h3 className='text-lg font-semibold mb-4'>Perbandingan Pendapatan</h3>
         <div className='h-64 flex items-center justify-center'>
-          <p className='text-gray-500'>Chart functionality is currently unavailable</p>
+          <p className='text-gray-500'>Fungsi grafik saat ini tidak tersedia</p>
         </div>
       </div>
 
       <div className='bg-white p-6 rounded-lg shadow'>
-        <h3 className='text-lg font-semibold mb-4'>Customer Metrics Comparison</h3>
+        <h3 className='text-lg font-semibold mb-4'>Perbandingan Metrik Pelanggan</h3>
         <div className='h-64 flex items-center justify-center'>
-          <p className='text-gray-500'>Chart functionality is currently unavailable</p>
+          <p className='text-gray-500'>Fungsi grafik saat ini tidak tersedia</p>
         </div>
       </div>
     </div>

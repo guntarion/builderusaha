@@ -11,30 +11,30 @@ export default function ClientBusinessPage() {
   // Example data - in a real application this would come from an API
   const ideationData = {
     totalIdeas: 42,
-    validatedIdeas: 28,
-    validationRate: 66.67,
-    avgValidationTime: '3.5 days',
+    ideTervalidasi: 28,
+    tingkatValidasi: 66.67,
+    rataWaktuValidasi: '3.5 hari',
   };
 
   const planningData = {
-    plansCreated: 15,
-    plansCompleted: 10,
-    completionRate: 66.67,
-    avgCompletionTime: '7 days',
+    rencanaDibuat: 15,
+    rencanaSelesai: 10,
+    tingkatPenyelesaian: 66.67,
+    rataWaktuPenyelesaian: '7 hari',
   };
 
   const growthData = {
-    revenueGrowth: 15,
-    customerGrowth: 10,
-    marketShare: 25,
-    avgMonthlyGrowth: '5%',
+    pertumbuhanPendapatan: 15,
+    pertumbuhanPelanggan: 10,
+    pangsaPasar: 25,
+    rataPertumbuhanBulanan: '5%',
   };
 
   const maturityData = {
-    profitability: 20,
-    operationalEfficiency: 85,
-    marketPosition: 60,
-    avgProfitMargin: '18%',
+    profitabilitas: 20,
+    efisiensiOperasional: 85,
+    posisiPasar: 60,
+    rataMarginKeuntungan: '18%',
   };
 
   const performanceData = {
@@ -55,7 +55,7 @@ export default function ClientBusinessPage() {
 
   return (
     <div className='space-y-8 p-6'>
-      <h1 className='text-2xl font-bold'>Client Business Monitoring</h1>
+      <h1 className='text-2xl font-bold'>Pemantauan Bisnis Klien</h1>
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
         <IdeationMetrics {...ideationData} />

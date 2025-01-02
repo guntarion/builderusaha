@@ -34,6 +34,12 @@ export default function QuizSection({ onQuizComplete }: QuizSectionProps) {
       ...prev,
       [currentQuestion]: String(value),
     }));
+
+    // Automatically advance to next question if not last question
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion((prev) => prev + 1);
+      window.scrollTo(0, 0);
+    }
   };
 
   const handleNext = () => {
@@ -138,9 +144,11 @@ export default function QuizSection({ onQuizComplete }: QuizSectionProps) {
           >
             Sebelumnya
           </button>
-          <button onClick={handleNext} className='bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700'>
-            {currentQuestion === questions.length - 1 ? 'Selesai' : 'Selanjutnya'}
-          </button>
+          {currentQuestion === questions.length - 1 && (
+            <button onClick={handleNext} className='bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700'>
+              Selesai
+            </button>
+          )}
         </div>
       </div>
     </div>

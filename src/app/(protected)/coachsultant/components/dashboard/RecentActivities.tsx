@@ -2,7 +2,7 @@ export default function RecentActivities() {
   const activities = [
     {
       id: 1,
-      client: 'Budi Santoso',
+      client: 'Cahyadi Santoso',
       type: 'Sesi Coaching',
       date: '2023-10-15',
       status: 'Selesai',

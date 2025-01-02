@@ -4,21 +4,21 @@ import ProgressBar from '../Common/ProgressBar';
 
 interface IdeationMetricsProps {
   totalIdeas: number;
-  validatedIdeas: number;
-  validationRate: number;
-  avgValidationTime: string;
+  ideTervalidasi: number;
+  tingkatValidasi: number;
+  rataWaktuValidasi: string;
 }
 
-export function IdeationMetrics({ totalIdeas, validatedIdeas, validationRate, avgValidationTime }: IdeationMetricsProps) {
+export function IdeationMetrics({ totalIdeas, ideTervalidasi, tingkatValidasi, rataWaktuValidasi }: IdeationMetricsProps) {
   return (
     <div className='space-y-4'>
-      <h3 className='text-lg font-semibold'>Ideation Metrics</h3>
+      <h3 className='text-lg font-semibold'>Metrik Ideasi</h3>
       <div className='grid grid-cols-2 gap-4'>
-        <MetricCard title='Total Ideas' value={totalIdeas.toString()} trend='↑ 12%' />
-        <MetricCard title='Validated Ideas' value={validatedIdeas.toString()} trend='↓ 5%' />
+        <MetricCard title='Total Ide' value={totalIdeas.toString()} trend='↑ 12%' />
+        <MetricCard title='Ide Tervalidasi' value={ideTervalidasi.toString()} trend='↓ 5%' />
       </div>
-      <ProgressBar value={validationRate} label='Validation Progress' />
-      <MetricCard title='Average Validation Time' value={avgValidationTime} trend='→ 0%' />
+      <ProgressBar value={tingkatValidasi} label='Progres Validasi' />
+      <MetricCard title='Rata-rata Waktu Validasi' value={rataWaktuValidasi} trend='→ 0%' />
     </div>
   );
 }

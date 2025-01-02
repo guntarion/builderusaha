@@ -3,22 +3,22 @@ import MetricCard from '../Common/MetricCard';
 import ProgressBar from '../Common/ProgressBar';
 
 interface MaturityMetricsProps {
-  profitability: number;
-  operationalEfficiency: number;
-  marketPosition: number;
-  avgProfitMargin: string;
+  profitabilitas: number;
+  efisiensiOperasional: number;
+  posisiPasar: number;
+  rataMarginKeuntungan: string;
 }
 
-export function MaturityMetrics({ profitability, operationalEfficiency, marketPosition, avgProfitMargin }: MaturityMetricsProps) {
+export function MaturityMetrics({ profitabilitas, efisiensiOperasional, posisiPasar, rataMarginKeuntungan }: MaturityMetricsProps) {
   return (
     <div className='space-y-4'>
-      <h3 className='text-lg font-semibold'>Maturity Metrics</h3>
+      <h3 className='text-lg font-semibold'>Metrik Kematangan</h3>
       <div className='grid grid-cols-2 gap-4'>
-        <MetricCard title='Profitability' value={`${profitability}%`} trend='↑ 5%' />
-        <MetricCard title='Operational Efficiency' value={`${operationalEfficiency}%`} trend='↑ 3%' />
+        <MetricCard title='Profitabilitas' value={`${profitabilitas}%`} trend='↑ 5%' />
+        <MetricCard title='Efisiensi Operasional' value={`${efisiensiOperasional}%`} trend='↑ 3%' />
       </div>
-      <ProgressBar value={marketPosition} label='Market Position' />
-      <MetricCard title='Avg Profit Margin' value={avgProfitMargin} trend='→ 0%' />
+      <ProgressBar value={posisiPasar} label='Posisi Pasar' />
+      <MetricCard title='Rata Margin Keuntungan' value={rataMarginKeuntungan} trend='→ 0%' />
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function BusinessMonitor() {
 
   return (
     <div className='p-6 space-y-6'>
-      <h1 className='text-2xl font-bold'>Business Monitor</h1>
+      <h1 className='text-2xl font-bold'>Monitor Bisnis</h1>
 
       {/* Quick Stats Overview */}
       <BusinessOverview metrics={metrics} />
@@ -43,7 +43,7 @@ export default function BusinessMonitor() {
         {/* KPI Section */}
         {dashboardConfig.showKPI && (
           <div className='bg-white rounded-lg shadow p-6'>
-            <h2 className='text-xl font-semibold mb-4'>KPI Metrics</h2>
+            <h2 className='text-xl font-semibold mb-4'>Metrik KPI</h2>
             <KPIDashboard />
           </div>
         )}
@@ -51,7 +51,7 @@ export default function BusinessMonitor() {
         {/* Milestones Section */}
         {dashboardConfig.showMilestones && (
           <div className='bg-white rounded-lg shadow p-6'>
-            <h2 className='text-xl font-semibold mb-4'>Milestone Tracker</h2>
+            <h2 className='text-xl font-semibold mb-4'>Pelacak Pencapaian</h2>
             <MilestoneList />
           </div>
         )}
@@ -59,7 +59,7 @@ export default function BusinessMonitor() {
         {/* Risk Assessment */}
         {dashboardConfig.showRisks && (
           <div className='bg-white rounded-lg shadow p-6'>
-            <h2 className='text-xl font-semibold mb-4'>Risk Assessment</h2>
+            <h2 className='text-xl font-semibold mb-4'>Penilaian Risiko</h2>
             <RiskMatrix />
           </div>
         )}
@@ -67,7 +67,7 @@ export default function BusinessMonitor() {
         {/* Growth Analytics */}
         {dashboardConfig.showGrowth && (
           <div className='bg-white rounded-lg shadow p-6'>
-            <h2 className='text-xl font-semibold mb-4'>Growth Analytics</h2>
+            <h2 className='text-xl font-semibold mb-4'>Analisis Pertumbuhan</h2>
             <GrowthDashboard />
           </div>
         )}

@@ -3,7 +3,7 @@ export default function Alerts() {
     {
       id: 1,
       type: 'Penting',
-      message: 'Sesi dengan Budi Santoso perlu konfirmasi ulang',
+      message: 'Sesi dengan Cahyadi Santoso perlu konfirmasi ulang',
       date: '2023-10-15',
     },
     {

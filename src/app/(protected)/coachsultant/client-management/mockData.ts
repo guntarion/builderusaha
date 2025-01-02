@@ -3,7 +3,7 @@ import { Client } from './types';
 export const mockClients: Client[] = [
   {
     id: '1',
-    name: 'Budi Santoso',
+    name: 'Cahyadi Santoso',
     company: 'PT Teknologi Maju',
     avatar: 'https://via.placeholder.com/150',
     industry: 'Teknologi',
