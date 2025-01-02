@@ -1,23 +1,50 @@
 // src/app/(marketing)/page.tsx
+'use client';
+
 import Link from 'next/link';
 import { Button } from 'src/components/ui/Button';
 import { Navbar } from 'src/components/layout/marketing/Navbar';
 import Image from 'next/image';
+import { useEffect } from 'react';
+import './styles.css';
 
 export default function HomePage() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const header = document.querySelector('.marketing-header');
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add('header-solid');
+          header.classList.remove('header-transparent');
+        } else {
+          header.classList.add('header-transparent');
+          header.classList.remove('header-solid');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className='min-h-screen'>
-      <Navbar />
+    <div className='min-h-screen animated-background'>
+      <div className='geometric-shapes'>
+        <div className='shape-left'></div>
+        <div className='shape-right'></div>
+      </div>
+
+      <Navbar className='marketing-header header-transparent' />
 
       {/* Hero Section */}
-      <section className='banner-section'>
+      <section className='hero-section'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='grid md:grid-cols-2 gap-12 items-center'>
             <div className='banner-content'>
               <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold mb-6'>
                 Bangun Bisnis Impian Anda
                 <br />
-                <span className='text-blue-200'>Dengan AI Pendamping</span>
+                <span className='ai-companion-text'>Dengan AI Pendamping</span>
               </h1>
               <p className='text-xl mb-8 text-blue-50'>
                 BuilderUsaha membantu Anda memulai, mengembangkan, dan mengelola bisnis dengan panduan personalisasi berbasis AI di setiap tahap
@@ -25,7 +52,7 @@ export default function HomePage() {
               </p>
               <div className='flex gap-4'>
                 <Button className='bg-white text-blue-600 hover:bg-blue-50'>Mulai Perjalanan Bisnis</Button>
-                <Button className='bg-blue-700 text-white hover:bg-blue-800'>Pelajari Lebih Lanjut</Button>
+                <Button className='bg-blue-400 text-white hover:bg-blue-500'>Pelajari Lebih Lanjut</Button>
               </div>
             </div>
             <div className='banner-img hidden md:block'>
@@ -182,31 +209,55 @@ export default function HomePage() {
 
             <div className='footer-section'>
               <h3>Layanan</h3>
-              <div className='footer-links'>
-                <Link href='/perjalanan-bisnis'>Perjalanan Bisnis</Link>
-                <Link href='/penilaian-wirausaha'>Penilaian Wirausaha</Link>
-                <Link href='/penilaian-bisnis'>Penilaian Bisnis</Link>
-                <Link href='/materi-pembelajaran'>Materi Pembelajaran</Link>
+              <div className='footer-links text-sm space-y-2'>
+                <div>
+                  <Link href='/perjalanan-bisnis'>Perjalanan Bisnis</Link>
+                </div>
+                <div>
+                  <Link href='/penilaian-wirausaha'>Penilaian Wirausaha</Link>
+                </div>
+                <div>
+                  <Link href='/penilaian-bisnis'>Penilaian Bisnis</Link>
+                </div>
+                <div>
+                  <Link href='/materi-pembelajaran'>Materi Pembelajaran</Link>
+                </div>
               </div>
             </div>
 
             <div className='footer-section'>
               <h3>Perusahaan</h3>
-              <div className='footer-links'>
-                <Link href='/tentang-kami'>Tentang Kami</Link>
-                <Link href='/blog'>Blog</Link>
-                <Link href='/karir'>Karir</Link>
-                <Link href='/kontak'>Kontak</Link>
+              <div className='footer-links text-sm space-y-2'>
+                <div>
+                  <Link href='/tentang-kami'>Tentang Kami</Link>
+                </div>
+                <div>
+                  <Link href='/blog'>Blog</Link>
+                </div>
+                <div>
+                  <Link href='/karir'>Karir</Link>
+                </div>
+                <div>
+                  <Link href='/kontak'>Kontak</Link>
+                </div>
               </div>
             </div>
 
             <div className='footer-section'>
               <h3>Bantuan</h3>
-              <div className='footer-links'>
-                <Link href='/faq'>FAQ</Link>
-                <Link href='/kebijakan-privasi'>Kebijakan Privasi</Link>
-                <Link href='/syarat-ketentuan'>Syarat & Ketentuan</Link>
-                <Link href='/bantuan'>Pusat Bantuan</Link>
+              <div className='footer-links text-sm space-y-2'>
+                <div>
+                  <Link href='/faq'>FAQ</Link>
+                </div>
+                <div>
+                  <Link href='/kebijakan-privasi'>Kebijakan Privasi</Link>
+                </div>
+                <div>
+                  <Link href='/syarat-ketentuan'>Syarat & Ketentuan</Link>
+                </div>
+                <div>
+                  <Link href='/bantuan'>Pusat Bantuan</Link>
+                </div>
               </div>
             </div>
           </div>
