@@ -1,5 +1,5 @@
 // src/app/(protected)/coachsultant/client-business/components/BusinessList/BusinessCard.tsx
-import { ClientBusiness } from '../../../../types/client-business';
+import ClientBusiness from '../../types/client-business';
 import ProgressBar from '../Common/ProgressBar';
 import MetricDisplay from '../Common/MetricDisplay';
 import PhaseIndicator from '../Common/PhaseIndicator';

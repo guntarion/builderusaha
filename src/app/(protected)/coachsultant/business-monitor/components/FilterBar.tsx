@@ -46,9 +46,16 @@ export function FilterBar({ onDateRangeChange, onExport }: FilterBarProps) {
           </PopoverContent>
         </Popover>
         <DatePicker
-          mode='range'
-          onSelect={(dateOrRange) => {
-            if (dateOrRange && typeof dateOrRange === 'object' && 'from' in dateOrRange && 'to' in dateOrRange) {
+          mode={'range' as const}
+          onChange={(dateOrRange) => {
+            if (
+              dateOrRange &&
+              typeof dateOrRange === 'object' &&
+              'from' in dateOrRange &&
+              'to' in dateOrRange &&
+              dateOrRange.from &&
+              dateOrRange.to
+            ) {
               onDateRangeChange(dateOrRange.from, dateOrRange.to);
             }
           }}

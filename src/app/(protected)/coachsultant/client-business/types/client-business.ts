@@ -13,12 +13,12 @@ interface CustomerInterview {
 interface Milestone {
   name: string;
   targetDate: Date;
-  status: 'belum-dimulai' | 'sedang-berjalan' | 'selesai';
+  status: 'not-started' | 'in-progress' | 'completed';
 }
 
 interface Risk {
   description: string;
-  impact: 'rendah' | 'sedang' | 'tinggi';
+  impact: 'low' | 'medium' | 'high';
   mitigation: string;
 }
 
@@ -37,7 +37,7 @@ export default interface ClientBusiness {
   id: string;
   clientId: string;
   businessName: string;
-  phase: 'ideasi' | 'perencanaan' | 'pertumbuhan' | 'kedewasaan';
+  phase: 'ideation' | 'planning' | 'growth' | 'maturity';
   startDate: Date;
   lastAssessment: Date;
 

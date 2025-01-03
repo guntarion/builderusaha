@@ -1,7 +1,7 @@
 // src/app/(marketing)/template-usaha/page.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import { Navbar } from '@/components/layout/marketing/Navbar';
+import { Navbar } from 'src/components/layout/marketing/Navbar';
 
 export default function TemplateUsahaPage() {
   return (

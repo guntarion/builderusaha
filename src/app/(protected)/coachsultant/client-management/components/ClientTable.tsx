@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Client } from '../types';
 import { mockClients } from '../mockData';
 
@@ -36,7 +37,9 @@ export default function ClientTable() {
             <tr key={client.id}>
               <td className='px-6 py-4'>
                 <div className='flex items-center'>
-                  <img className='h-10 w-10 rounded-full' src={client.avatar} alt={client.name} />
+                  <div className='h-10 w-10 relative rounded-full'>
+                    <Image src={client.avatar} alt={client.name} fill className='rounded-full object-cover' sizes='40px' />
+                  </div>
                   <div className='ml-4'>
                     <div className='text-sm font-medium text-gray-900'>{client.name}</div>
                     <div className='text-sm text-gray-500'>{client.company}</div>

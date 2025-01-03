@@ -1,6 +1,8 @@
 // src/app/(protected)/coachsultant/appointments/page.tsx
 'use client';
 
+import Image from 'next/image';
+
 export default function AppointmentsPage() {
   const appointments = [
     {
@@ -35,7 +37,7 @@ export default function AppointmentsPage() {
 
       {appointments.map((appointment, index) => (
         <div key={index} className='bg-white rounded-lg shadow-md p-4 mb-4 flex items-center'>
-          <img
+          <Image
             src={
               appointment.name === 'Rumasi Arief'
                 ? '/images/person/patient2.jpg'
@@ -48,6 +50,8 @@ export default function AppointmentsPage() {
                 : '/images/person/persondefault.jpg'
             }
             alt='Profile'
+            width={64}
+            height={64}
             className='w-16 h-16 rounded-full object-cover mr-4'
           />
 

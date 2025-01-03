@@ -4,8 +4,9 @@
 
 import { useState } from 'react';
 import LoadingSpinner from './LoadingSpinner';
-import { DatePicker } from '@/components/ui/DatePicker';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/Select';
+import { DatePicker } from '../../../../../../components/ui/DatePicker';
+import type { DateRange } from 'react-day-picker';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../../../../components/ui/Select';
 import { useSmartGoals } from '../hooks/useSmartGoals';
 import type { GoalCategory, Industry, Resource, SmartGoalFormData } from '../types';
 
@@ -115,10 +116,13 @@ export function SmartGoalsForm() {
             <label className='block text-sm font-medium text-gray-700'>Tanggal Mulai</label>
             <DatePicker
               value={formData.timeline.startDate}
-              onChange={(date) =>
+              onChange={(date: Date | DateRange | undefined) =>
                 setFormData({
                   ...formData,
-                  timeline: { ...formData.timeline, startDate: date || new Date() },
+                  timeline: {
+                    ...formData.timeline,
+                    startDate: date instanceof Date ? date : new Date(),
+                  },
                 })
               }
             />
@@ -127,10 +131,13 @@ export function SmartGoalsForm() {
             <label className='block text-sm font-medium text-gray-700'>Tanggal Selesai</label>
             <DatePicker
               value={formData.timeline.endDate}
-              onChange={(date) =>
+              onChange={(date: Date | DateRange | undefined) =>
                 setFormData({
                   ...formData,
-                  timeline: { ...formData.timeline, endDate: date || new Date() },
+                  timeline: {
+                    ...formData.timeline,
+                    endDate: date instanceof Date ? date : new Date(),
+                  },
                 })
               }
             />
