@@ -8,7 +8,7 @@ import { Bell, Search } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Header() {
-  const placeholderImage = '/images/assessments/placeholder-thumb.jpg';
+  const placeholderImage = '/images/person/patient10.jpg';
 
   return (
     <header className='h-16 bg-white border-b border-gray-200'>

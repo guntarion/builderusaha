@@ -35,7 +35,21 @@ export default function AppointmentsPage() {
 
       {appointments.map((appointment, index) => (
         <div key={index} className='bg-white rounded-lg shadow-md p-4 mb-4 flex items-center'>
-          <img src='/images/person/persondefault.jpg' alt='Profile' className='w-16 h-16 rounded-full object-cover mr-4' />
+          <img
+            src={
+              appointment.name === 'Rumasi Arief'
+                ? '/images/person/patient2.jpg'
+                : appointment.name === 'Ani Wijaya'
+                ? '/images/person/patient3.jpg'
+                : appointment.name === 'Cahyo Pratama'
+                ? '/images/person/patient14.jpg'
+                : appointment.name === 'Dewi Lestari'
+                ? '/images/person/patient10.jpg'
+                : '/images/person/persondefault.jpg'
+            }
+            alt='Profile'
+            className='w-16 h-16 rounded-full object-cover mr-4'
+          />
 
           <div className='flex-1'>
             <h2 className='font-semibold'>{appointment.name}</h2>

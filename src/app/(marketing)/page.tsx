@@ -58,13 +58,13 @@ export default function HomePage() {
             <div className='banner-img hidden md:block'>
               <Image src='/images/hero-bisnis.jpg' alt='Business Growth' width={600} height={500} priority />
               <div className='banner-floating-icon'>
-                <Image src='/images/icon-chart.svg' alt='Chart' width={60} height={60} />
+                <Image src='/images/icon-finance.svg' alt='Chart' width={60} height={60} />
               </div>
               <div className='banner-floating-icon'>
-                <Image src='/images/icon-growth.svg' alt='Growth' width={60} height={60} />
+                <Image src='/images/icon-rate-stars.svg' alt='Growth' width={60} height={60} />
               </div>
               <div className='banner-floating-icon'>
-                <Image src='/images/icon-target.svg' alt='Target' width={60} height={60} />
+                <Image src='/images/icon-card-id.svg' alt='Target' width={60} height={60} />
               </div>
             </div>
           </div>

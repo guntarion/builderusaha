@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const placeholderImage = '/images/assessments/placeholder-thumb.jpg';
+  const placeholderImage = '/images/person/patient10.jpg';
 
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', href: '/coachsultant' },
